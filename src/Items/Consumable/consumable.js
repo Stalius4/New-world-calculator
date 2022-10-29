@@ -1,65 +1,76 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./consumable.css"
 
 const Consumable= ({consumableList, setConsumableList})=>{
 
+const [sortedArr, setSortedArr] = useState([])
+const [updated, setUpdated] = useState(false)
 
-
-
-    const fetchData = async () => {
-        try {
-    
-            const offsetArr = [1, 2];
-            const itemArr = [];
-    offsetArr.forEach(async(item,index) =>{
-
-
-  
-          const response = await fetch(`https://nwdb.info/db/items/consumables/raw-food/page/${item}.json`);
-          const data = await response.json();
-          data.data.forEach(async(item, index) => {
-
-            const eventObj = {
-                id: item.id,
-                tier: item.tier,
-               name: item.name,
-               icon: item.icon,
-               itemClass: item.itemClass,
-                description: item.description,  
-                rarity: item.rarity
-            };
-
-            itemArr.push(eventObj)})
-            setConsumableList(itemArr);
+    useEffect(() => {
+          const fetchData = async () => {
+              try {
           
-          if (!response.ok) {
-            throw new Error(response.statusText);
-          }
-
-
-    console.log(itemArr,"daa")
+                  const offsetArr = [1, 2];
+                  const itemArr = [];
+          offsetArr.forEach(async(item,index) =>{
+      
+      
         
-        //   console.log(consumableList, "pirmas");
-        })
-        } catch (error) {}
-      };
-      useEffect(() => {
-        fetchData();
-        
+                const response = await fetch(`https://nwdb.info/db/items/consumables/raw-food/page/${item}.json`);
+                const data = await response.json();
+                data.data.forEach(async(item, index) => {
+      
+                  const eventObj = {
+                      id: item.id,
+                      tier: item.tier,
+                     name: item.name,
+                     icon: item.icon,
+                     itemClass: item.itemClass,
+                      description: item.description,  
+                      rarity: item.rarity
+                  };
+      
+                  itemArr.push(eventObj)})
+                  setConsumableList(itemArr);
+                
+                if (!response.ok) {
+                  throw new Error(response.statusText);
+                }
+      
+      
+        //   console.log(itemArr,"daa")
+              
+              //   console.log(consumableList, "pirmas");
+              })
+              } catch (error) {}
+            };
+       
+        fetchData()
         // eslint-disable-next-line
-      }, []);
+      }, [updated]);
 
-      const sortArr = () =>{
-        
-     consumableList.sort((a, b) => a.tier - b.tier)
+      const sortArrUp = () =>{
+        const newSortedArr = consumableList.sort((a, b) =>{ 
+            return a.tier - b.tier})
+            setConsumableList  ( newSortedArr )
+            setUpdated(true)
+console.log("up", newSortedArr)
+   
       }
 
-
+      const sortArrDown = () =>{
+        const newSortedArr = consumableList.sort((a, b) =>{ 
+            return b.tier - a.tier})
+setSortedArr  ( newSortedArr )
+      console.log("down", newSortedArr)
+   
+      }
 
 
       return (
         <div className="main-box">
-            <button onClick={ sortArr }>Sort by tear</button>
+            <button onClick={   }>Sort by tear</button>
+            <button onClick={ sortArrDown }>Sort by tear</button>
        {consumableList.map((item, index) => {
        
         return (
@@ -87,6 +98,7 @@ const Consumable= ({consumableList, setConsumableList})=>{
                  {/* <div>{item.id}</div> */}
                     <div>{item.name}</div>
                        <div className="tier" >Tier:{
+                        item.tier === 0 ? "0":
                        item.tier === 1 ? "I":
                        item.tier === 2 ? "II":
                        item.tier === 3 ? "III":
