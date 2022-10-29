@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,300;1,400;1,500&display=swap');
+*{ 
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.main-box{
+    background-image: url("../Images/texture-bottom.jpg");
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+
+}
+.item-box{
+    margin: 2px;
+    color: white;
+    display:flex;
+    justify-content:space-between;
+    border: rgba(255, 255, 255, 0.608) solid 1px;
+    background-color: rgba(5, 1, 1, 0.708);
+    width: 600px;
+    height: 65px;
+    border-radius: 7px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.item-image-rarity-0{
+    background-color: rgba(240, 248, 255, 0.224);
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin:7px;
+border: white solid 1px;
+}
+
+.item-image-rarity-1{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin:7px;
+    background-color:rgba(0, 202, 233, 0.281) ;
+    border: rgb(0,203,233) solid 1px;
+    }
+
+    .item-image-rarity-2{
+        width: 50px;
+    height: 50px;
+        border-radius: 5px;
+        margin: 7px;
+        background-color:rgba(212, 109, 7, 0.504) ;
+        border: rgb(212, 109, 7) solid 1px;
+        }
