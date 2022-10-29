@@ -10,7 +10,11 @@ const [consumableList, setConsumableList] = useState ([])
 
   return (
     <div className="App">
+      <div className='yellow-line'></div>
+      <div className='info-box'>
 <Consumable consumableList={consumableList} setConsumableList={setConsumableList}></Consumable>
+
+</div>
     </div>
   );
 }

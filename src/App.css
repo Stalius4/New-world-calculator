@@ -1,4 +1,31 @@
 .App {
-  text-align: center;
+  background-image: url("/src/Items/Images/texture-bottom.jpg");
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  padding-top: 120px;
 }
 
+
+.info-box{
+
+margin: auto;
+
+border-radius: 5px;
+top:120px;
+  width: 1000px;
+  height: 800px;
+  background-color: rgba(12, 7, 7, 0.367);
+
+  border-width: 1px;
+  border-style: solid;
+  border-image: 
+    linear-gradient(
+      to left, 
+      rgba(19, 168, 66, 0),
+      rgba(255, 166, 0, 0.411),
+      #ffa500, 
+      rgba(255, 166, 0, 0.367),
+      rgba(19, 168, 66, 0)
+    ) 1 0 0 0 ;
+}

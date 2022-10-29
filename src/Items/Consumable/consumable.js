@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { AiFillCaretUp } from "react-icons/ai";
+import { AiFillCaretDown } from "react-icons/ai";
 import "./consumable.css"
 
 const Consumable= ({consumableList, setConsumableList})=>{
 
 const [sortedArr, setSortedArr] = useState([])
-const [updated, setUpdated] = useState(false)
+// const [updated, setUpdated] = useState(false)
 
     useEffect(() => {
           const fetchData = async () => {
@@ -47,38 +49,65 @@ const [updated, setUpdated] = useState(false)
        
         fetchData()
         // eslint-disable-next-line
-      }, [updated]);
+      }, []);
 
-      const sortArrUp = () =>{
-        const newSortedArr = consumableList.sort((a, b) =>{ 
-            return a.tier - b.tier})
+
+
+
+      
+      const sortTearUp = () =>{
+        console.log(consumableList, "pirmas")
+        const newSortedArr = [...consumableList].sort((a, b) =>{ 
+            return a.tier - b.tier
+          })
             setConsumableList  ( newSortedArr )
-            setUpdated(true)
-console.log("up", newSortedArr)
-   
       }
 
-      const sortArrDown = () =>{
-        const newSortedArr = consumableList.sort((a, b) =>{ 
+      const sortTearDown = () =>{
+        const newSortedArr = [...consumableList].sort((a, b) =>{ 
             return b.tier - a.tier})
-setSortedArr  ( newSortedArr )
-      console.log("down", newSortedArr)
-   
+setConsumableList  ( newSortedArr )
+      
+      }
+      const sortGearUp = () =>{
+        console.log(consumableList, "pirmas")
+        const newSortedArr = [...consumableList].sort((a, b) =>{ 
+            return a.rarity - b.rarity
+          })
+            setConsumableList  ( newSortedArr )
       }
 
-
+      const sortGearDown = () =>{
+        console.log(consumableList, "pirmas")
+        const newSortedArr = [...consumableList].sort((a, b) =>{ 
+            return b.rarity - a.rarity
+          })
+            setConsumableList  ( newSortedArr )
+      }
       return (
         <div className="main-box">
-            <button onClick={   }>Sort by tear</button>
-            <button onClick={ sortArrDown }>Sort by tear</button>
+          <div className="top-sort-part">
+            <div className="item-title-name">Name</div>
+            <div className="item-title-rarity">Rarity
+            <AiFillCaretUp color="orange" onClick={ sortGearUp  }>fds</AiFillCaretUp>
+            <AiFillCaretDown color="orange" onClick={ sortGearDown  }></AiFillCaretDown>
+            </div>
+            <div className="item-title-tear">Tear
+            <AiFillCaretUp color="orange" onClick={ sortTearUp  }>fds</AiFillCaretUp>
+            <AiFillCaretDown color="orange" onClick={ sortTearDown  }></AiFillCaretDown>
+            </div>
+          
+            </div>
        {consumableList.map((item, index) => {
        
         return (
-          <div key={index} className="item-box">
+          <div key={index} className={index % 2 === 0 ?"item-box": "item-box-white"}>
 
             <img className={item.rarity === 0 ? "item-image-rarity-0":
            item.rarity === 1 ? "item-image-rarity-1": 
-           item.rarity === 2 ? "item-image-rarity-2": "item-image-rarity-0"}
+           item.rarity === 2 ? "item-image-rarity-2": 
+           item.rarity === 4 ? "item-image-rarity-4": 
+           "item-image-rarity-0"}
               src={`https://cdn.nwdb.info/db/images/live/v17/icons/items/consumable/${
                 item.id ==="juniperberryt5" ? "blueberryt1":
                 item.id ==="meatsquidt1" ? "squidmeatt1":
@@ -96,15 +125,9 @@ setSortedArr  ( newSortedArr )
                     e.target.src ="https://uxwing.com/wp-content/themes/uxwing/download/web-app-development/image-not-found-icon.png";
      }}/>
                  {/* <div>{item.id}</div> */}
-                    <div>{item.name}</div>
-                       <div className="tier" >Tier:{
-                        item.tier === 0 ? "0":
-                       item.tier === 1 ? "I":
-                       item.tier === 2 ? "II":
-                       item.tier === 3 ? "III":
-                       item.tier === 4 ? "IV":
-                       item.tier === 5 ? "V": item.tear
-                       }</div> 
+          <div className="item-name">{item.name}</div>
+          <div className="item-rarity">{item.rarity === 0 ? "Common" :item.rarity}</div>
+          <div className="item-tier" >{item.tier === 0 ? "0":item.tier === 1 ? "I":item.tier === 2 ? "II":item.tier === 3 ? "III":item.tier === 4 ? "IV":item.tier === 5 ? "V": item.tear}</div> 
           </div>
         );
       })
