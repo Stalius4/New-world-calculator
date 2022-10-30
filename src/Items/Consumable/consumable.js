@@ -126,7 +126,15 @@ setConsumableList  ( newSortedArr )
      }}/>
                  {/* <div>{item.id}</div> */}
           <div className="item-name">{item.name}</div>
-          <div className="item-rarity">{item.rarity === 0 ? "Common" :item.rarity}</div>
+          <div className={item.rarity === 0 ?"item-rarity":
+            item.rarity === 1 ?"item-rarity-uncommon":
+            item.rarity === 2 ?"item-rarity-rare":
+            item.rarity === 3 ?"item-rarity-epic":
+            item.rarity === 4 ?"item-rarity-legendary":
+          
+          
+          "item-rarity"}>
+            {item.rarity === 0 ? "Common" : item.rarity === 1 ? "Uncommon" : item.rarity === 2 ? "Rare" : item.rarity === 3 ? "Epic" : item.rarity === 4 ? "Legendary" : item.rarity}</div>
           <div className="item-tier" >{item.tier === 0 ? "0":item.tier === 1 ? "I":item.tier === 2 ? "II":item.tier === 3 ? "III":item.tier === 4 ? "IV":item.tier === 5 ? "V": item.tear}</div> 
           </div>
         );
