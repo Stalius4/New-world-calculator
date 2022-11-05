@@ -3,7 +3,7 @@ import { AiFillCaretUp } from "react-icons/ai";
 import { AiFillCaretDown } from "react-icons/ai";
 import "./consumable.css"
 
-const Consumable= ({consumableList, setConsumableList})=>{
+const Consumable= ({consumableList, setConsumableList, filtConsumableList, setFiltConsumableList})=>{
 
 const [sortedArr, setSortedArr] = useState([])
 // const [updated, setUpdated] = useState(false)
@@ -34,7 +34,8 @@ const [sortedArr, setSortedArr] = useState([])
       
                   itemArr.push(eventObj)})
                   setConsumableList(itemArr);
-                
+                  setFiltConsumableList(itemArr)
+                  console.log(filtConsumableList, "filt list")
                 if (!response.ok) {
                   throw new Error(response.statusText);
                 }
@@ -53,20 +54,19 @@ const [sortedArr, setSortedArr] = useState([])
 
 
 
-
+    const sortTearUp = () => {
+    
+        const newSortedArr = [...consumableList].sort((a,b) => {
       
-      const sortTearUp = () =>{
-        console.log(consumableList, "pirmas")
-        const newSortedArr = [...consumableList].sort((a, b) =>{ 
             return a.tier - b.tier
-          })
-            setConsumableList  ( newSortedArr )
-      }
+        })
+        setFiltConsumableList(newSortedArr)
+    }
 
       const sortTearDown = () =>{
         const newSortedArr = [...consumableList].sort((a, b) =>{ 
             return b.tier - a.tier})
-setConsumableList  ( newSortedArr )
+            setFiltConsumableList( newSortedArr )
       
       }
       const sortGearUp = () =>{
@@ -74,7 +74,7 @@ setConsumableList  ( newSortedArr )
         const newSortedArr = [...consumableList].sort((a, b) =>{ 
             return a.rarity - b.rarity
           })
-            setConsumableList  ( newSortedArr )
+          setFiltConsumableList( newSortedArr )
       }
 
       const sortGearDown = () =>{
@@ -82,23 +82,43 @@ setConsumableList  ( newSortedArr )
         const newSortedArr = [...consumableList].sort((a, b) =>{ 
             return b.rarity - a.rarity
           })
-            setConsumableList  ( newSortedArr )
+          setFiltConsumableList( newSortedArr )
       }
+
+
+const changeRarity=(e) => {
+
+  const result = consumableList.filter(({ rarity }) => rarity == e.target.value);
+console.log(result)
+setFiltConsumableList(result)
+}
+
+
       return (
         <div className="main-box">
           <div className="top-sort-part">
             <div className="item-title-name">Name</div>
             <div className="item-title-rarity">Rarity
             <AiFillCaretUp color="orange" onClick={ sortGearUp  }>fds</AiFillCaretUp>
-            <AiFillCaretDown color="orange" onClick={ sortGearDown  }></AiFillCaretDown>
+            <AiFillCaretDown color="orange" onClick={sortGearDown  }></AiFillCaretDown>
+
+            <label for="Rarity"></label>
+
+<select id="Rarity" onChange={(e)=>changeRarity(e) }>
+  <option value="0" >Common</option>
+  <option value="1">Uncommon</option>
+  <option value="2">Rare</option>
+  <option value="3">Epic</option>
+  <option value="4">Legendary</option>
+</select>
             </div>
             <div className="item-title-tear">Tear
-            <AiFillCaretUp color="orange" onClick={ sortTearUp  }>fds</AiFillCaretUp>
+            <AiFillCaretUp color="orange" onClick={sortTearUp  }>fds</AiFillCaretUp>
             <AiFillCaretDown color="orange" onClick={ sortTearDown  }></AiFillCaretDown>
             </div>
           
             </div>
-       {consumableList.map((item, index) => {
+       {filtConsumableList.map((item, index) => {
        
         return (
           <div key={index} className={index % 2 === 0 ?"item-box": "item-box-white"}>

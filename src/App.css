@@ -3,10 +3,12 @@
 
 .App {
   background-image: url("/src/Items/Images/texture-bottom.jpg");
+  background-size: auto;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   padding-top: 120px;
+  
 }
 
 
@@ -17,7 +19,7 @@ margin: auto;
 border-radius: 5px;
 top:120px;
   width: 1000px;
-  height: 800px;
+  
   background-color: rgba(12, 7, 7, 0.367);
 
   border-width: 1px;
