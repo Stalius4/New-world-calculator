@@ -8,7 +8,7 @@
   padding: 0;
   box-sizing: border-box;
   padding-top: 120px;
-  
+  height: 800px;
 }
 
 
@@ -19,7 +19,7 @@ margin: auto;
 border-radius: 5px;
 top:120px;
   width: 1000px;
-  
+  height: 600px;
   background-color: rgba(12, 7, 7, 0.367);
 
   border-width: 1px;
@@ -32,5 +32,5 @@ top:120px;
       #ffa500, 
       rgba(255, 166, 0, 0.367),
       rgba(19, 168, 66, 0)
-    ) 1 0 0 0 ;
+    ) 1 0 1 0 ;
 }

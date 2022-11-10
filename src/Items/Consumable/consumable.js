@@ -1,12 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { AiFillCaretUp } from "react-icons/ai";
 import { AiFillCaretDown } from "react-icons/ai";
+import { MdOutlineArrowForward } from "react-icons/md";
 import "./consumable.css"
 
 const Consumable= ({consumableList, setConsumableList, filtConsumableList, setFiltConsumableList})=>{
 
-const [sortedArr, setSortedArr] = useState([])
+const [pageNumber, setPageNumber] = useState({
+  firstIndex: 0,
+  lastIndex: 10
+})
 // const [updated, setUpdated] = useState(false)
+
+const nextPage = ()=> {
+
+
+
+console.log(consumableList,"listas")
+  setPageNumber({ firstIndex: pageNumber.firstIndex + 10, lastIndex:pageNumber.lastIndex +10})
+  console.log(pageNumber.firstIndex)
+}
 
     useEffect(() => {
           const fetchData = async () => {
@@ -118,10 +131,11 @@ setFiltConsumableList(result)
             </div>
           
             </div>
-       {filtConsumableList.map((item, index) => {
-       
+       {filtConsumableList.slice(pageNumber.firstIndex,pageNumber.lastIndex).map((item, index) => {
+     
         return (
-          <div key={index} className={index % 2 === 0 ?"item-box": "item-box-white"}>
+          <div key={index} className={index % 2 === 0 ?"item-box":
+          "item-box-white"}>
 
             <img className={item.rarity === 0 ? "item-image-rarity-0":
            item.rarity === 1 ? "item-image-rarity-1": 
@@ -159,7 +173,8 @@ setFiltConsumableList(result)
           </div>
         );
       })
-     } </div>)
+      
+     } <div><MdOutlineArrowForward color="orange" size={25} onClick={nextPage}></MdOutlineArrowForward></div></div>)
 }
 
 export default Consumable
