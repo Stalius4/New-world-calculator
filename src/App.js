@@ -10,12 +10,12 @@ const [filtConsumableList, setFiltConsumableList] = useState([])
 
   return (
     <div className="App">
-      <div className='yellow-line'></div>
-      <div className='info-box'>
+   
+    
 <Consumable consumableList={consumableList} setConsumableList={setConsumableList} filtConsumableList={filtConsumableList} setFiltConsumableList={setFiltConsumableList}></Consumable>
 
 </div>
-    </div>
+   
   );
 }
 

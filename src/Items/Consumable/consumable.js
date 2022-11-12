@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { AiFillCaretUp } from "react-icons/ai";
 import { AiFillCaretDown } from "react-icons/ai";
-import { MdOutlineArrowForward } from "react-icons/md";
+import { AiOutlineCaretRight } from "react-icons/ai";
+import { AiOutlineCaretLeft } from "react-icons/ai";
 import "./consumable.css"
 
 const Consumable= ({consumableList, setConsumableList, filtConsumableList, setFiltConsumableList})=>{
@@ -13,13 +14,16 @@ const [pageNumber, setPageNumber] = useState({
 // const [updated, setUpdated] = useState(false)
 
 const nextPage = ()=> {
-
-
-
 console.log(consumableList,"listas")
   setPageNumber({ firstIndex: pageNumber.firstIndex + 10, lastIndex:pageNumber.lastIndex +10})
-  console.log(pageNumber.firstIndex)
+
 }
+
+const previousPage = ()=> {
+  console.log(consumableList,"listas")
+    setPageNumber({ firstIndex: pageNumber.firstIndex - 10, lastIndex:pageNumber.lastIndex -10})
+  
+  }
 
     useEffect(() => {
           const fetchData = async () => {
@@ -69,7 +73,7 @@ console.log(consumableList,"listas")
 
     const sortTearUp = () => {
     
-        const newSortedArr = [...consumableList].sort((a,b) => {
+        const newSortedArr = [...filtConsumableList].sort((a,b) => {
       
             return a.tier - b.tier
         })
@@ -77,14 +81,14 @@ console.log(consumableList,"listas")
     }
 
       const sortTearDown = () =>{
-        const newSortedArr = [...consumableList].sort((a, b) =>{ 
+        const newSortedArr = [...filtConsumableList].sort((a, b) =>{ 
             return b.tier - a.tier})
             setFiltConsumableList( newSortedArr )
       
       }
       const sortGearUp = () =>{
         console.log(consumableList, "pirmas")
-        const newSortedArr = [...consumableList].sort((a, b) =>{ 
+        const newSortedArr = [...filtConsumableList].sort((a, b) =>{ 
             return a.rarity - b.rarity
           })
           setFiltConsumableList( newSortedArr )
@@ -92,7 +96,7 @@ console.log(consumableList,"listas")
 
       const sortGearDown = () =>{
         console.log(consumableList, "pirmas")
-        const newSortedArr = [...consumableList].sort((a, b) =>{ 
+        const newSortedArr = [...filtConsumableList].sort((a, b) =>{ 
             return b.rarity - a.rarity
           })
           setFiltConsumableList( newSortedArr )
@@ -130,10 +134,13 @@ setFiltConsumableList(result)
             <AiFillCaretDown color="orange" onClick={ sortTearDown  }></AiFillCaretDown>
             </div>
           
-            </div>
+            </div> 
+            
+            <div className="map-item-box">
        {filtConsumableList.slice(pageNumber.firstIndex,pageNumber.lastIndex).map((item, index) => {
-     
+    
         return (
+          
           <div key={index} className={index % 2 === 0 ?"item-box":
           "item-box-white"}>
 
@@ -171,10 +178,17 @@ setFiltConsumableList(result)
             {item.rarity === 0 ? "Common" : item.rarity === 1 ? "Uncommon" : item.rarity === 2 ? "Rare" : item.rarity === 3 ? "Epic" : item.rarity === 4 ? "Legendary" : item.rarity}</div>
           <div className="item-tier" >{item.tier === 0 ? "0":item.tier === 1 ? "I":item.tier === 2 ? "II":item.tier === 3 ? "III":item.tier === 4 ? "IV":item.tier === 5 ? "V": item.tear}</div> 
           </div>
-        );
-      })
+         ); 
+   }) 
       
-     } <div><MdOutlineArrowForward color="orange" size={25} onClick={nextPage}></MdOutlineArrowForward></div></div>)
+     } </div> 
+    
+     <div className="bottom-navigation">
+     <AiOutlineCaretLeft color="77C3EC" size={15} onClick={previousPage}></AiOutlineCaretLeft>
+      <AiOutlineCaretRight color="77C3EC" size={15} onClick={nextPage}></AiOutlineCaretRight>
+    
+      </div>
+      </div>)
 }
 
 export default Consumable
