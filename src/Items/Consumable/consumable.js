@@ -11,64 +11,73 @@ const [pageNumber, setPageNumber] = useState({
   firstIndex: 0,
   lastIndex: 10
 })
-// const [updated, setUpdated] = useState(false)
 
-const nextPage = ()=> {
-console.log(consumableList,"listas")
-  setPageNumber({ firstIndex: pageNumber.firstIndex + 10, lastIndex:pageNumber.lastIndex +10})
 
-}
 
-const previousPage = ()=> {
-  console.log(consumableList,"listas")
-    setPageNumber({ firstIndex: pageNumber.firstIndex - 10, lastIndex:pageNumber.lastIndex -10})
-  
-  }
-
-    useEffect(() => {
-          const fetchData = async () => {
-              try {
-          
-                  const offsetArr = [1, 2];
-                  const itemArr = [];
-          offsetArr.forEach(async(item,index) =>{
+useEffect(() => {
+  const fetchData = async () => {
+    try {
       
-      
+      const offsetArr = [1, 2];
+      const itemArr = [];
+      offsetArr.forEach(async(item,index) =>{
         
-                const response = await fetch(`https://nwdb.info/db/items/consumables/raw-food/page/${item}.json`);
-                const data = await response.json();
-                data.data.forEach(async(item, index) => {
-      
-                  const eventObj = {
-                      id: item.id,
-                      tier: item.tier,
-                     name: item.name,
-                     icon: item.icon,
-                     itemClass: item.itemClass,
-                      description: item.description,  
-                      rarity: item.rarity
-                  };
-      
-                  itemArr.push(eventObj)})
-                  setConsumableList(itemArr);
-                  setFiltConsumableList(itemArr)
-                  console.log(filtConsumableList, "filt list")
-                if (!response.ok) {
-                  throw new Error(response.statusText);
-                }
-      
-      
-        //   console.log(itemArr,"daa")
-              
-              //   console.log(consumableList, "pirmas");
-              })
-              } catch (error) {}
-            };
-       
-        fetchData()
-        // eslint-disable-next-line
-      }, []);
+        
+        
+        const response = await fetch(`https://nwdb.info/db/items/consumables/raw-food/page/${item}.json`);
+        const data = await response.json();
+        data.data.forEach(async(item, index) => {
+          
+          const eventObj = {
+            id: item.id,
+            tier: item.tier,
+            name: item.name,
+            icon: item.icon,
+            itemClass: item.itemClass,
+            description: item.description,  
+            rarity: item.rarity
+          };
+          
+          itemArr.push(eventObj)})
+          setConsumableList(itemArr);
+          setFiltConsumableList(itemArr)
+          console.log(filtConsumableList, "filt list")
+          if (!response.ok) {
+            throw new Error(response.statusText);
+          }
+          
 
+        })
+      } catch (error) {}
+    };
+    
+    fetchData()
+    // eslint-disable-next-line
+  }, []);
+  
+  const nextPage = ()=> {
+  
+
+    if(filtConsumableList.length > pageNumber.lastIndex ){
+      setPageNumber({ firstIndex: pageNumber.firstIndex + 10, lastIndex:pageNumber.lastIndex +10})
+    }
+  }
+  
+  
+  
+  
+  
+  const previousPage = ()=> {
+    console.log(consumableList,"listas")
+    if(pageNumber.firstIndex <= 0 ){
+    
+    }else{
+      setPageNumber({ firstIndex: pageNumber.firstIndex - 10, lastIndex:pageNumber.lastIndex -10})
+    }
+   
+     
+    
+    }
 
 
     const sortTearUp = () => {
@@ -106,8 +115,12 @@ const previousPage = ()=> {
 const changeRarity=(e) => {
 
   const result = consumableList.filter(({ rarity }) => rarity == e.target.value);
-console.log(result)
+
 setFiltConsumableList(result)
+setPageNumber({
+  firstIndex: 0,
+  lastIndex: 10
+})
 }
 
 
@@ -184,9 +197,14 @@ setFiltConsumableList(result)
      } </div> 
     
      <div className="bottom-navigation">
-     <AiOutlineCaretLeft color="77C3EC" size={15} onClick={previousPage}></AiOutlineCaretLeft>
-      <AiOutlineCaretRight color="77C3EC" size={15} onClick={nextPage}></AiOutlineCaretRight>
-    
+     <div className="mini-line"></div>
+      <div className="small-line"></div>
+      <div className="medium-line"></div>
+      <div className="long-line"></div>
+<div className="both-page-btn">
+     <AiOutlineCaretLeft color="77C3EC" size={15} onClick={previousPage} className="clickLeft"></AiOutlineCaretLeft>
+      <AiOutlineCaretRight color="77C3EC" size={15} onClick={nextPage} className="clickRight"></AiOutlineCaretRight>
+      </div>
       </div>
       </div>)
 }

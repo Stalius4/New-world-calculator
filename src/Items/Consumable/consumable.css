@@ -121,11 +121,7 @@ grid-area: content1;
             grid-area: content9;
         }
 
-        .bottom-navigation{
-            grid-area: footer;
-            justify-self: center;
-            align-self: center;
-        }
+
     .top-sort-part{
         grid-area: content10;
         justify-self: center;
@@ -211,3 +207,100 @@ grid-area: content1;
         display: none;
     }
 
+    .bottom-navigation{
+        margin-top: -47px;
+        grid-area: footer;
+        justify-self: center;
+        align-self: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows:  3px 3px 3px  3px 15px;
+        grid-template-areas: 
+      
+        " . content11 . "
+        " . content12 . "
+        " . content13 . "
+        " . content15 . "
+        " . content14 . " ;
+        gap: 2px;
+    }
+    .mini-line{
+        width: 300px;
+        border: #ffa500 solid 1px;
+        border-width: 1px;
+        border-style: solid;
+        border-image: 
+          linear-gradient(
+            to left, 
+            rgba(255, 255, 255, 0),
+            rgba(227, 226, 226, 0.411),
+            #fffffe72, 
+            rgba(244, 244, 243, 0.367),
+            rgba(19, 168, 66, 0)
+          ) 0 0 1 0 ;
+        grid-area: content15;
+        align-self: start;
+        justify-self: center;
+    }
+.small-line{
+    width: 400px;
+    border: #ffa500 solid 1px;
+    border-width: 1px;
+    border-style: solid;
+    border-image: 
+      linear-gradient(
+        to left, 
+        rgba(255, 255, 255, 0),
+        rgba(227, 226, 226, 0.411),
+        #fffffe72, 
+        rgba(244, 244, 243, 0.367),
+        rgba(19, 168, 66, 0)
+      ) 0 0 1 0 ;
+    grid-area: content13;
+    align-self: start;
+    justify-self: center;
+}
+.medium-line{
+    width: 500px;
+    border: #ffa500 solid 1px;
+    border-width: 1px;
+    border-style: solid;
+    border-image: 
+      linear-gradient(
+        to left, 
+        rgba(255, 255, 255, 0),
+        rgba(227, 226, 226, 0.411),
+        #fefeff72, 
+        rgba(244, 244, 243, 0.367),
+        rgba(19, 168, 66, 0)
+      ) 0 0 1 0 ;
+    grid-area: content12;
+    align-self: start;
+    justify-self: center;
+}
+.long-line{
+    width: 600px;
+    border: #ffa500 solid 1px;
+    border-width: 1px;
+    border-style: solid;
+    border-image: 
+      linear-gradient(
+        to left, 
+        rgba(255, 255, 255, 0),
+        rgba(227, 226, 226, 0.411),
+        #fffffe72, 
+        rgba(244, 244, 243, 0.367),
+        rgba(19, 168, 66, 0)
+      ) 0 0 1 0 ;
+    grid-area: content11;
+    align-self: start;
+    justify-self: center;
+}
+
+
+.both-page-btn{
+    display: flex;
+    place-self: center;
+    grid-area: content14;
+    margin-top: 25px;
+}
