@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { AiFillCaretUp } from "react-icons/ai";
-import { AiFillCaretDown } from "react-icons/ai";
-import { AiOutlineCaretRight } from "react-icons/ai";
-import { AiOutlineCaretLeft } from "react-icons/ai";
+import { AiFillCaretUp, AiFillCaretDown, AiOutlineCaretRight, AiOutlineCaretLeft } from "react-icons/ai";
+import {MdLooksOne, MdLooksTwo, MdLooks3,MdLooks4,MdLooks5,MdLooks6, MdMoreHoriz} from "react-icons/md"
 import "./consumable.css"
+import nwlogo from "../Images/logo.png"
 
 const Consumable= ({consumableList, setConsumableList, filtConsumableList, setFiltConsumableList})=>{
 
@@ -55,73 +54,67 @@ useEffect(() => {
     // eslint-disable-next-line
   }, []);
   
-  const nextPage = ()=> {
-  
+  const nextPage = () => {
+    if (filtConsumableList.length > pageNumber.lastIndex) {
+      setPageNumber({
+        firstIndex: pageNumber.firstIndex + 10,
+        lastIndex: pageNumber.lastIndex + 10,
+      });
+    }
+  };
 
-    if(filtConsumableList.length > pageNumber.lastIndex ){
-      setPageNumber({ firstIndex: pageNumber.firstIndex + 10, lastIndex:pageNumber.lastIndex +10})
+  const previousPage = () => {
+    console.log(consumableList, "listas");
+    if (pageNumber.firstIndex <= 0) {
+    } else {
+      setPageNumber({
+        firstIndex: pageNumber.firstIndex - 10,
+        lastIndex: pageNumber.lastIndex - 10,
+      });
     }
-  }
-  
-  
-  
-  
-  
-  const previousPage = ()=> {
-    console.log(consumableList,"listas")
-    if(pageNumber.firstIndex <= 0 ){
-    
-    }else{
-      setPageNumber({ firstIndex: pageNumber.firstIndex - 10, lastIndex:pageNumber.lastIndex -10})
-    }
-   
-     
-    
-    }
+  };
 
 
     const sortTearUp = () => {
-    
-        const newSortedArr = [...filtConsumableList].sort((a,b) => {
-      
-            return a.tier - b.tier
-        })
-        setFiltConsumableList(newSortedArr)
-    }
+      const newSortedArr = [...filtConsumableList].sort((a, b) => {
+        return a.tier - b.tier;
+      });
+      setFiltConsumableList(newSortedArr);
+    };
 
-      const sortTearDown = () =>{
-        const newSortedArr = [...filtConsumableList].sort((a, b) =>{ 
-            return b.tier - a.tier})
-            setFiltConsumableList( newSortedArr )
-      
-      }
-      const sortGearUp = () =>{
-        console.log(consumableList, "pirmas")
-        const newSortedArr = [...filtConsumableList].sort((a, b) =>{ 
-            return a.rarity - b.rarity
-          })
-          setFiltConsumableList( newSortedArr )
-      }
+    const sortTearDown = () => {
+      const newSortedArr = [...filtConsumableList].sort((a, b) => {
+        return b.tier - a.tier;
+      });
+      setFiltConsumableList(newSortedArr);
+    };
+    const sortGearUp = () => {
+      console.log(consumableList, "pirmas");
+      const newSortedArr = [...filtConsumableList].sort((a, b) => {
+        return a.rarity - b.rarity;
+      });
+      setFiltConsumableList(newSortedArr);
+    };
 
-      const sortGearDown = () =>{
-        console.log(consumableList, "pirmas")
-        const newSortedArr = [...filtConsumableList].sort((a, b) =>{ 
-            return b.rarity - a.rarity
-          })
-          setFiltConsumableList( newSortedArr )
-      }
+    const sortGearDown = () => {
+      console.log(consumableList, "pirmas");
+      const newSortedArr = [...filtConsumableList].sort((a, b) => {
+        return b.rarity - a.rarity;
+      });
+      setFiltConsumableList(newSortedArr);
+    };
 
+    const changeRarity = (e) => {
+      const result = consumableList.filter(
+        ({ rarity }) => rarity == e.target.value
+      );
 
-const changeRarity=(e) => {
-
-  const result = consumableList.filter(({ rarity }) => rarity == e.target.value);
-
-setFiltConsumableList(result)
-setPageNumber({
-  firstIndex: 0,
-  lastIndex: 10
-})
-}
+      setFiltConsumableList(result);
+      setPageNumber({
+        firstIndex: 0,
+        lastIndex: 10,
+      });
+    };
 
 
       return (
@@ -203,8 +196,16 @@ setPageNumber({
       <div className="long-line"></div>
 <div className="both-page-btn">
      <AiOutlineCaretLeft color="77C3EC" size={15} onClick={previousPage} className="clickLeft"></AiOutlineCaretLeft>
+     <MdLooksOne color="77C3EC" size={15} ></MdLooksOne>
+     <MdLooksTwo color="77C3EC" size={15} ></MdLooksTwo>
+     <MdMoreHoriz color="77C3EC" size={15} ></MdMoreHoriz>
+     <MdLooks3 color="77C3EC" size={15} ></MdLooks3>
+     <MdLooks4 color="77C3EC" size={15} ></MdLooks4>
+     <MdLooks5 color="77C3EC" size={15} ></MdLooks5>
+     <MdLooks6 color="77C3EC" size={15} ></MdLooks6>
       <AiOutlineCaretRight color="77C3EC" size={15} onClick={nextPage} className="clickRight"></AiOutlineCaretRight>
       </div>
+      <img src={nwlogo} alt="" className="logo-spin" />
       </div>
       </div>)
 }

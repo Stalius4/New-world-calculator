@@ -52,10 +52,48 @@
     grid-template-areas: 
     " content1 content2 content3  content4" ;
 }
+.item-box:hover{
+    
+    color: #ffa500;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom: rgba(255, 255, 255, 0.363) solid 1px;
+    background-color: rgba(5, 1, 1, 0.468);
+    width: 600px;
+    height: 47px;
+    
+    font-family: 'IM Fell DW Pica', serif;
+    font-size: 16px;
+    padding-right: 5px;
+    display:grid;
+    grid-template-columns: 70px 300px 130px  75px;
+    grid-template-areas: 
+    " content1 content2 content3  content4" ;
+}
 
 .item-box-white{
     
     color: rgb(190, 186, 186);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom: rgba(255, 255, 255, 0.271) solid 1px;
+    background-color: rgba(80, 76, 76, 0.645);
+    width: 600px;
+    height: 47px;
+    font-family: 'IM Fell DW Pica', serif;
+    font-size: 16px;
+    padding-right: 5px;
+    display:grid;
+    grid-template-columns: 70px 300px 130px  75px;
+    grid-template-areas: 
+    " content1 content2 content3  content4" ;
+
+}
+.item-box-white:hover{
+    
+    color: #ffa500;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -303,4 +341,26 @@ grid-area: content1;
     place-self: center;
     grid-area: content14;
     margin-top: 25px;
+}
+
+.logo-spin{
+   
+    opacity: 0.4;
+    position: absolute;
+    right:470px;
+    bottom: 130px;
+    border-radius: 50%;
+    animation-name: spin;
+  animation-duration: 25000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
 }
