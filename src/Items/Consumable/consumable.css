@@ -364,3 +364,13 @@ grid-area: content1;
         transform:rotate(360deg);
     }
 }
+
+/* display pages icons */
+
+.display-none{
+    display: none;
+}
+.display-inline{
+    display: inline;
+  
+}

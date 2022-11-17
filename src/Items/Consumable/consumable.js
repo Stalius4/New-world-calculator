@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { AiFillCaretUp, AiFillCaretDown, AiOutlineCaretRight, AiOutlineCaretLeft } from "react-icons/ai";
-import {MdLooksOne, MdLooksTwo, MdLooks3,MdLooks4,MdLooks5,MdLooks6, MdMoreHoriz} from "react-icons/md"
+import { AiFillCaretUp, AiFillCaretDown} from "react-icons/ai";
 import "./consumable.css"
 import nwlogo from "../Images/logo.png"
+import Pagination from "./pagination";
+const Consumable= ({pageNumber, setPageNumber,consumableList, setConsumableList, filtConsumableList, setFiltConsumableList})=>{
 
-const Consumable= ({consumableList, setConsumableList, filtConsumableList, setFiltConsumableList})=>{
 
-const [pageNumber, setPageNumber] = useState({
-  firstIndex: 0,
-  lastIndex: 10
-})
 
 
 
@@ -54,25 +50,7 @@ useEffect(() => {
     // eslint-disable-next-line
   }, []);
   
-  const nextPage = () => {
-    if (filtConsumableList.length > pageNumber.lastIndex) {
-      setPageNumber({
-        firstIndex: pageNumber.firstIndex + 10,
-        lastIndex: pageNumber.lastIndex + 10,
-      });
-    }
-  };
 
-  const previousPage = () => {
-    console.log(consumableList, "listas");
-    if (pageNumber.firstIndex <= 0) {
-    } else {
-      setPageNumber({
-        firstIndex: pageNumber.firstIndex - 10,
-        lastIndex: pageNumber.lastIndex - 10,
-      });
-    }
-  };
 
 
     const sortTearUp = () => {
@@ -194,17 +172,7 @@ useEffect(() => {
       <div className="small-line"></div>
       <div className="medium-line"></div>
       <div className="long-line"></div>
-<div className="both-page-btn">
-     <AiOutlineCaretLeft color="77C3EC" size={15} onClick={previousPage} className="clickLeft"></AiOutlineCaretLeft>
-     <MdLooksOne color="77C3EC" size={15} ></MdLooksOne>
-     <MdLooksTwo color="77C3EC" size={15} ></MdLooksTwo>
-     <MdMoreHoriz color="77C3EC" size={15} ></MdMoreHoriz>
-     <MdLooks3 color="77C3EC" size={15} ></MdLooks3>
-     <MdLooks4 color="77C3EC" size={15} ></MdLooks4>
-     <MdLooks5 color="77C3EC" size={15} ></MdLooks5>
-     <MdLooks6 color="77C3EC" size={15} ></MdLooks6>
-      <AiOutlineCaretRight color="77C3EC" size={15} onClick={nextPage} className="clickRight"></AiOutlineCaretRight>
-      </div>
+<Pagination pageNumber={pageNumber} filtConsumableList={filtConsumableList} setPageNumber={setPageNumber} ></Pagination>
       <img src={nwlogo} alt="" className="logo-spin" />
       </div>
       </div>)
