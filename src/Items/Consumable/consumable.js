@@ -3,52 +3,57 @@ import { AiFillCaretUp, AiFillCaretDown} from "react-icons/ai";
 import "./consumable.css"
 import nwlogo from "../Images/logo.png"
 import Pagination from "./pagination";
-const Consumable= ({pageNumber, setPageNumber,consumableList, setConsumableList, filtConsumableList, setFiltConsumableList})=>{
+const Consumable= ({loading,setLoading ,consumableList, setConsumableList})=>{
 
+  const [filtConsumableList, setFiltConsumableList] = useState([])
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10);
 
-
-
+//pagination
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItem = filtConsumableList.slice(indexOfFirstItem, indexOfLastItem);
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+//================================
 
 useEffect(() => {
   const fetchData = async () => {
     try {
-      
       const offsetArr = [1, 2];
       const itemArr = [];
-      offsetArr.forEach(async(item,index) =>{
-        
-        
-        
-        const response = await fetch(`https://nwdb.info/db/items/consumables/raw-food/page/${item}.json`);
+      offsetArr.forEach(async (item, index) => {
+        setLoading(true);
+        const response = await fetch(
+          `https://nwdb.info/db/items/consumables/raw-food/page/${item}.json`
+        );
         const data = await response.json();
-        data.data.forEach(async(item, index) => {
-          
+        data.data.forEach(async (item, index) => {
           const eventObj = {
             id: item.id,
             tier: item.tier,
             name: item.name,
             icon: item.icon,
             itemClass: item.itemClass,
-            description: item.description,  
-            rarity: item.rarity
+            description: item.description,
+            rarity: item.rarity,
           };
-          
-          itemArr.push(eventObj)})
-          setConsumableList(itemArr);
-          setFiltConsumableList(itemArr)
-          console.log(filtConsumableList, "filt list")
-          if (!response.ok) {
-            throw new Error(response.statusText);
-          }
-          
 
-        })
-      } catch (error) {}
-    };
-    
-    fetchData()
-    // eslint-disable-next-line
-  }, []);
+          itemArr.push(eventObj);
+        });
+        setConsumableList(itemArr);
+        setFiltConsumableList(itemArr);
+        console.log(filtConsumableList, "filt list");
+        setLoading(false);
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+      });
+    } catch (error) {}
+  };
+
+  fetchData();
+  // eslint-disable-next-line
+}, []);
   
 
 
@@ -88,12 +93,12 @@ useEffect(() => {
       );
 
       setFiltConsumableList(result);
-      setPageNumber({
-        firstIndex: 0,
-        lastIndex: 10,
-      });
+     setCurrentPage(1)
     };
-
+    if (loading) {
+      return <h2>Loading...</h2>;
+    }
+  
 
       return (
         <div className="main-box">
@@ -114,14 +119,14 @@ useEffect(() => {
 </select>
             </div>
             <div className="item-title-tear">Tear
-            <AiFillCaretUp color="orange" onClick={sortTearUp  }>fds</AiFillCaretUp>
+            <AiFillCaretUp color="orange" onClick={sortTearUp  }></AiFillCaretUp>
             <AiFillCaretDown color="orange" onClick={ sortTearDown  }></AiFillCaretDown>
             </div>
           
             </div> 
             
             <div className="map-item-box">
-       {filtConsumableList.slice(pageNumber.firstIndex,pageNumber.lastIndex).map((item, index) => {
+       {currentItem.map((item, index) => {
     
         return (
           
@@ -172,8 +177,14 @@ useEffect(() => {
       <div className="small-line"></div>
       <div className="medium-line"></div>
       <div className="long-line"></div>
-<Pagination pageNumber={pageNumber} filtConsumableList={filtConsumableList} setPageNumber={setPageNumber} ></Pagination>
-      <img src={nwlogo} alt="" className="logo-spin" />
+      <Pagination
+        itemsPerPage={itemsPerPage}
+        totalItems={filtConsumableList.length}
+        paginate={paginate}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
+            <img src={nwlogo} alt="" className="logo-spin" />
       </div>
       </div>)
 }

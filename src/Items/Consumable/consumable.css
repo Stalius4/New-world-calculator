@@ -221,7 +221,7 @@ grid-area: content1;
     .item-rarity-rare{
         grid-area: content3;
         justify-self: center;
-        color:rgb(0,203,233)
+        color:#00cbe9
     }
     .item-rarity-epic{
         grid-area: content3;
@@ -239,6 +239,7 @@ grid-area: content1;
     .item-tear{
         grid-area:content4;
         justify-items: center;
+       
     }
 
     .display-none{
@@ -336,12 +337,7 @@ grid-area: content1;
 }
 
 
-.both-page-btn{
-    display: flex;
-    place-self: center;
-    grid-area: content14;
-    margin-top: 25px;
-}
+
 
 .logo-spin{
    
@@ -374,3 +370,47 @@ grid-area: content1;
     display: inline;
   
 }
+
+.both-page-btn{
+    display: flex;
+   
+    align-self: center;
+    justify-self: center;
+    grid-area: content14;
+    margin-top: 40px;
+    background-color: rgba(192, 192, 192, 0.25);
+    border-radius: 7px;
+    
+}
+.page-btn{
+    background-color: rgba(128, 128, 128, 0);
+    font-size: large;
+    border:rgba(128, 128, 128, 0) solid 1px ;
+
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width: 15px;
+}
+.page-btn-active{
+    font-size:15px;
+    background-color: rgba(128, 128, 128, 0);
+    
+   
+    color: rgb(255, 253, 250);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top:rgba(128, 128, 128, 0) solid 1px ;
+    border-left:rgba(128, 128, 128, 0) solid 1px ;
+    border-right:rgba(128, 128, 128, 0) solid 1px ;
+    width: 15px;
+    transition: ease-in 0.7s ;
+    border-bottom:solid 1px #ffa500;
+}
+.page-btn:hover{
+    background-color: rgba(240, 255, 255, 0.405);
+}
+

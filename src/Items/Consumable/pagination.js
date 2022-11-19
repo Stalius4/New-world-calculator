@@ -1,66 +1,45 @@
-import { useState } from "react";
-import {MdLooksOne, MdLooksTwo, MdLooks3,MdLooks4,MdLooks5,MdLooks6, MdMoreHoriz} from "react-icons/md"
+import React from 'react';
+import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 
-import { AiOutlineCaretRight, AiOutlineCaretLeft } from "react-icons/ai";
+const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage, setCurrentPage }) => {
+  const pageNumbers = [];
 
-
-const Pagination = ({pageNumber, setPageNumber, filtConsumableList}) => {
-
- const clickOnPage =(number) => {
-
-
- }
+  for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
+    pageNumbers.push(i);
+  }
 
 
-    const nextPage = () => {
-        console.log(pageNumber.firstIndex, "Lapas")
-        if (filtConsumableList.length > pageNumber.lastIndex) {
-          setPageNumber({
-            firstIndex: pageNumber.firstIndex + 10,
-            lastIndex: pageNumber.lastIndex + 10,
-          });
-        }
-      };
-    
-      const previousPage = () => {
-        console.log(pageNumber.firstIndex, "Lapas")
-        if (pageNumber.firstIndex <= 0) {
-        } else {
-          setPageNumber({
-            firstIndex: pageNumber.firstIndex - 10,
-            lastIndex: pageNumber.lastIndex - 10,
-          });
-        }
-      };
-
-return(
-
-
-<div className="both-page-btn">
-     <AiOutlineCaretLeft color="77C3EC" size={15} onClick={previousPage} className="clickLeft"></AiOutlineCaretLeft>
-
-
-     <MdLooksOne color={pageNumber.lastIndex === 10 ?"orange" :"77C3EC"} size={15} ></MdLooksOne>
-
-
-     <MdMoreHoriz color="77C3EC" size={15}className={pageNumber.lastIndex >= 40 ? "display-inline" : "display-none"} ></MdMoreHoriz>
-
-
-     <MdLooksTwo color={pageNumber.firstIndex === 10 ?"orange" :"77C3EC"} size={15} className={pageNumber.lastIndex < 40? "display-inline" : "display-none" } ></MdLooksTwo>
-   
-     <MdLooks3 color={pageNumber.firstIndex === 20 ?"orange" :"77C3EC"} size={15} className={pageNumber.lastIndex > 10 && pageNumber.lastIndex < 50? "display-inline" : "display-none" } ></MdLooks3>
-     <MdLooks4 color={pageNumber.firstIndex === 30 ?"orange" :"77C3EC"} size={15} className={pageNumber.lastIndex >= 30? "display-inline" : "display-none" }></MdLooks4>
-     <MdLooks5 color={pageNumber.firstIndex === 40 ?"orange" :"77C3EC"} size={15} className={pageNumber.lastIndex >= 40? "display-inline" : "display-none" }></MdLooks5>
-     <MdMoreHoriz color="77C3EC" size={15}className={pageNumber.lastIndex >= 50 ? "display-none": "display-inline" } ></MdMoreHoriz>
-     <MdLooks6 color={pageNumber.firstIndex === 50 ?"orange" :"77C3EC"} size={15} ></MdLooks6>
-      <AiOutlineCaretRight color="77C3EC" size={15} onClick={nextPage} className="clickRight"></AiOutlineCaretRight>
-      </div>
-
-
-
-
-)
-
+const nextPage = () => {
+    console.log(pageNumbers)
+if(pageNumbers.length> currentPage){
+    setCurrentPage(currentPage+1)
+    console.log(currentPage, "current page")
+}
 }
 
-export default Pagination
+const previousPage = () => {
+    console.log(pageNumbers)
+if( currentPage> 1){
+    setCurrentPage(currentPage-1)
+    console.log(currentPage, "current page")
+}
+}
+
+  return (
+   
+      <div className='both-page-btn'>
+        <div><IoIosArrowBack onClick={()=> previousPage()} color='#00cbe9' size={25}></IoIosArrowBack></div>
+        {pageNumbers.map(number => (
+
+    
+                <button key={number} className={number == currentPage ?'page-btn-active' :'page-btn'} onClick={() => paginate(number)} >  {number}</button>
+               
+              
+        ))}
+        <div><IoIosArrowForward  onClick={()=> nextPage()} color='#00cbe9' size={25} ></IoIosArrowForward></div>
+      </div>
+  
+  );
+};
+
+export default Pagination;

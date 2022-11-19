@@ -4,9 +4,9 @@ import React, { useState} from "react";
 import Consumable from './Items/Consumable/consumable';
 
 function App() {
-
+  const [loading, setLoading] = useState(false);
 const [consumableList, setConsumableList] = useState ([])
-const [filtConsumableList, setFiltConsumableList] = useState([])
+
 
 const [pageNumber, setPageNumber] = useState({
   firstIndex: 0,
@@ -19,7 +19,7 @@ const [pageNumber, setPageNumber] = useState({
     <div className="App">
    
     
-<Consumable pageNumber={pageNumber} setPageNumber={setPageNumber} consumableList={consumableList} setConsumableList={setConsumableList} filtConsumableList={filtConsumableList} setFiltConsumableList={setFiltConsumableList}></Consumable>
+<Consumable loading={loading} setLoading={setLoading} pageNumber={pageNumber} setPageNumber={setPageNumber} consumableList={consumableList} setConsumableList={setConsumableList} ></Consumable>
 
 </div>
    
