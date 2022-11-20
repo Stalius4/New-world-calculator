@@ -7,7 +7,7 @@ const [nameToggle, setNameToggle] = useState (true)
 const [iconToggle, setIconToggle] =useState (0)
     const sortName = () =>{
         //ascending order
-        if(nameToggle){
+        if(nameToggle && filtConsumableList.length > 1 ){
             const newSortedArr = [...filtConsumableList].sort((a, b) => {
                 const nameA = a.name.toUpperCase(); // ignore upper and lowercase
                 const nameB = b.name.toUpperCase(); // ignore upper and lowercase
@@ -27,7 +27,7 @@ const [iconToggle, setIconToggle] =useState (0)
 
         
     //descending order
-        if(!nameToggle){
+        if(!nameToggle  && filtConsumableList.length > 1 ){
             const newSortedArr = [...filtConsumableList].sort((a, b) => {
                 const nameA = a.name.toUpperCase(); // ignore upper and lowercase
                 const nameB = b.name.toUpperCase(); // ignore upper and lowercase
@@ -44,6 +44,7 @@ const [iconToggle, setIconToggle] =useState (0)
              setNameToggle(!nameToggle)
              setIconToggle(2)
         }
+
 
     }
 
