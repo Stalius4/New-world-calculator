@@ -29,7 +29,7 @@ if( currentPage> 1){
       <div className='both-page-btn'>
         <div><IoIosArrowBack onClick={()=> previousPage()} color='#00cbe9' size={25}></IoIosArrowBack></div>
         {pageNumbers.map(number => (
-                <button key={number} className={number == currentPage ?'page-btn-active' :'page-btn'} onClick={() => paginate(number)} >  {number}</button>
+                <button key={number} className={number === currentPage ?'page-btn-active' :'page-btn'} onClick={() => paginate(number)} >  {number}</button>
         ))}
         <div><IoIosArrowForward  onClick={()=> nextPage()} color='#00cbe9' size={25} ></IoIosArrowForward></div>
       </div>
