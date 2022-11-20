@@ -4,7 +4,11 @@ import { AiFillCaretUp, AiFillCaretDown} from "react-icons/ai";
 const SortItems = ( {filtConsumableList, setFiltConsumableList, consumableList, setCurrentPage}) => {
 
 const [nameToggle, setNameToggle] = useState (true)
+
+// if icon toggle = 0 no icon will be displayed, 1 ascending order, 2 descending order
 const [iconToggle, setIconToggle] =useState (0)
+
+
     const sortName = () =>{
         //ascending order
         if(nameToggle && filtConsumableList.length > 1 ){
@@ -89,7 +93,7 @@ const [iconToggle, setIconToggle] =useState (0)
   
       const changeRarity = (e) => {
         const result = consumableList.filter(
-          ({ rarity }) => rarity == e.target.value
+          ({ rarity }) => rarity === e.target.value
         );
   
         setFiltConsumableList(result);
