@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { AiFillCaretUp, AiFillCaretDown} from "react-icons/ai";
+
 import "./consumable.css"
 import nwlogo from "../Images/logo.png"
 import Pagination from "./pagination";
+import Filter from "./filter";
+import SortItems from "./components/top-sorting";
 const Consumable= ({loading,setLoading ,consumableList, setConsumableList})=>{
 
   const [filtConsumableList, setFiltConsumableList] = useState([])
@@ -58,43 +60,7 @@ useEffect(() => {
 
 
 
-    const sortTearUp = () => {
-      const newSortedArr = [...filtConsumableList].sort((a, b) => {
-        return a.tier - b.tier;
-      });
-      setFiltConsumableList(newSortedArr);
-    };
-
-    const sortTearDown = () => {
-      const newSortedArr = [...filtConsumableList].sort((a, b) => {
-        return b.tier - a.tier;
-      });
-      setFiltConsumableList(newSortedArr);
-    };
-    const sortGearUp = () => {
-      console.log(consumableList, "pirmas");
-      const newSortedArr = [...filtConsumableList].sort((a, b) => {
-        return a.rarity - b.rarity;
-      });
-      setFiltConsumableList(newSortedArr);
-    };
-
-    const sortGearDown = () => {
-      console.log(consumableList, "pirmas");
-      const newSortedArr = [...filtConsumableList].sort((a, b) => {
-        return b.rarity - a.rarity;
-      });
-      setFiltConsumableList(newSortedArr);
-    };
-
-    const changeRarity = (e) => {
-      const result = consumableList.filter(
-        ({ rarity }) => rarity == e.target.value
-      );
-
-      setFiltConsumableList(result);
-     setCurrentPage(1)
-    };
+   
     if (loading) {
       return <h2>Loading...</h2>;
     }
@@ -102,29 +68,8 @@ useEffect(() => {
 
       return (
         <div className="main-box">
-          <div className="top-sort-part">
-            <div className="item-title-name">Name</div>
-            <div className="item-title-rarity">Rarity
-            <AiFillCaretUp color="orange" onClick={ sortGearUp  }>fds</AiFillCaretUp>
-            <AiFillCaretDown color="orange" onClick={sortGearDown  }></AiFillCaretDown>
-
-            <label for="Rarity"></label>
-
-<select id="Rarity" onChange={(e)=>changeRarity(e) }>
-  <option value="0" >Common</option>
-  <option value="1">Uncommon</option>
-  <option value="2">Rare</option>
-  <option value="3">Epic</option>
-  <option value="4">Legendary</option>
-</select>
-            </div>
-            <div className="item-title-tear">Tear
-            <AiFillCaretUp color="orange" onClick={sortTearUp  }></AiFillCaretUp>
-            <AiFillCaretDown color="orange" onClick={ sortTearDown  }></AiFillCaretDown>
-            </div>
-          
-            </div> 
-            
+<SortItems filtConsumableList={filtConsumableList} setFiltConsumableList={setFiltConsumableList} consumableList={consumableList} setCurrentPage={setCurrentPage} ></SortItems>
+            <Filter></Filter>
             <div className="map-item-box">
        {currentItem.map((item, index) => {
     

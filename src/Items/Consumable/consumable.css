@@ -10,7 +10,7 @@
     grid-template-columns: 0.5fr 600px 0.5fr ;
     grid-template-rows: 50px 480px  1fr;
     grid-template-areas:
-      ". content10 . "
+      ". content10 content16 "
       ". content9 . "
       ". footer . ";
       margin: auto;
@@ -32,6 +32,16 @@
             rgba(19, 168, 66, 0)
           ) 1 0 1 0 ;
 
+}
+
+.filter-box{
+    grid-area: content16;
+    justify-self: center;
+    align-self: center;
+    color: white;
+    border: grey solid 1px;
+    border-radius: 7px;
+    width: 75px;
 }
 .item-box{
     
@@ -166,9 +176,9 @@ grid-area: content1;
         width: 600px;
         height: 50px;
         display:grid;
-        grid-template-columns: 70px 350px 1fr 30px 1fr;
+        grid-template-columns: 75px 50px 285px 1fr 30px 1fr;
         grid-template-areas: 
-        " content1 content2 content3 content4 content5" ;
+        " content1 content2 . content3 content4 content5" ;
         margin-bottom: 4px;
         border: #ffa500 solid 1px;
         border-width: 1px;
@@ -188,8 +198,12 @@ grid-area: content1;
         color: rgba(207, 207, 207, 0.624);
         align-self: center;
         grid-area: content2;
+        cursor: pointer;
     }
-    
+    .item-title-name:hover{
+        color: rgb(207, 207, 207);
+        cursor: pointer;
+    }
 
     .item-title-rarity{
         color: rgba(207, 207, 207, 0.624);
@@ -387,7 +401,7 @@ grid-area: content1;
     font-size: large;
     border:rgba(128, 128, 128, 0) solid 1px ;
 
-    color: white;
+    color: rgba(255, 255, 255, 0.518);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -407,7 +421,7 @@ grid-area: content1;
     border-left:rgba(128, 128, 128, 0) solid 1px ;
     border-right:rgba(128, 128, 128, 0) solid 1px ;
     width: 15px;
-    transition: ease-in 0.7s ;
+    transition: ease-in 0.2s ;
     border-bottom:solid 1px #ffa500;
 }
 .page-btn:hover{
