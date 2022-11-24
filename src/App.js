@@ -1,17 +1,14 @@
 
 import './App.css';
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import Consumable from './Items/Consumable/consumable';
+import Mote from './Items/Motes/motes';
 
 function App() {
   const [loading, setLoading] = useState(false);
 const [consumableList, setConsumableList] = useState ([])
 
 
-const [pageNumber, setPageNumber] = useState({
-  firstIndex: 0,
-  lastIndex: 10
-})
 
 
 
@@ -19,7 +16,7 @@ const [pageNumber, setPageNumber] = useState({
     <div className="App">
    
     
-<Consumable loading={loading} setLoading={setLoading} pageNumber={pageNumber} setPageNumber={setPageNumber} consumableList={consumableList} setConsumableList={setConsumableList} ></Consumable>
+<Consumable loading={loading} setLoading={setLoading}  consumableList={consumableList} setConsumableList={setConsumableList} ></Consumable>
 
 </div>
    

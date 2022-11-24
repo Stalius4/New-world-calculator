@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import "./consumable.css"
 import nwlogo from "../Images/logo.png"
 import Pagination from "./pagination";
-import Filter from "./filter";
+import Filter from "./components/filter";
 import SortItems from "./components/top-sorting";
 const Consumable= ({loading,setLoading ,consumableList, setConsumableList})=>{
 
@@ -18,44 +18,27 @@ const Consumable= ({loading,setLoading ,consumableList, setConsumableList})=>{
   const paginate = pageNumber => setCurrentPage(pageNumber);
 //================================
 
-useEffect(() => {
-  const fetchData = async () => {
+useEffect (() => {
+  // fetchPhotos(setRandomPic)
+  const listConsumable =  async (setUserList) => {
     try {
-      const offsetArr = [1, 2];
-      const itemArr = [];
-      offsetArr.forEach(async (item, index) => {
-        setLoading(true);
-        const response = await fetch(
-          `https://nwdb.info/db/items/consumables/raw-food/page/${item}.json`
-        );
-        const data = await response.json();
-        data.data.forEach(async (item, index) => {
-          const eventObj = {
-            id: item.id,
-            tier: item.tier,
-            name: item.name,
-            icon: item.icon,
-            itemClass: item.itemClass,
-            description: item.description,
-            rarity: item.rarity,
-          };
+      setLoading(true);
+    const response = await fetch("http://localhost:5002/user/")
+    const data = await response.json()
+   
+    setConsumableList(data.result[0].data)
+    setFiltConsumableList(data.result[0].data);
+    setLoading(false);
+    if (!response.ok){
+      throw new Error(response.statusText)
+    }
 
-          itemArr.push(eventObj);
-        });
-        setConsumableList(itemArr);
-        setFiltConsumableList(itemArr);
-        console.log(filtConsumableList, "filt list");
-        setLoading(false);
-        if (!response.ok) {
-          throw new Error(response.statusText);
-        }
-      });
-    } catch (error) {}
-  };
-
-  fetchData();
-  // eslint-disable-next-line
-}, []);
+    // make sure result should me in array so I will be able tu use map()
+    } catch (err) {
+    }
+  }
+ listConsumable()
+}, [])
   
 
 
@@ -83,18 +66,7 @@ useEffect(() => {
            item.rarity === 2 ? "item-image-rarity-2": 
            item.rarity === 4 ? "item-image-rarity-4": 
            "item-image-rarity-0"}
-              src={`https://cdn.nwdb.info/db/images/live/v17/icons/items/consumable/${
-                item.id ==="juniperberryt5" ? "blueberryt1":
-                item.id ==="meatsquidt1" ? "squidmeatt1":
-                item.id ==="redmeatt1" ? "meatt1":
-                item.id ==="fisht2" ? "fisht1":
-                item.id ==="fisht3" ? "fisht1":
-                item.id ==="fisht4" ? "fisht1":
-                item.id ==="enrichedredmeatt5" ? "highnutritionmeatst5":
-                item.id === "enrichedmeatportiont5" ? "highnutritionmeatst3":
-                item.id === "armadillomeatt5" ? "armadillomeat":
-                item.id === "scorpionmeatt5" ?"scorpionmeat"
-                :item.id }.png` }
+              src={`https://cdn.nwdb.info/db/images/live/v17/icons/items/consumable/${item.id }.png` }
               alt="sd"
               onError={e => { 
                     e.target.src ="https://uxwing.com/wp-content/themes/uxwing/download/web-app-development/image-not-found-icon.png";

@@ -4,6 +4,9 @@
     margin: 0;
     box-sizing: border-box;
 }
+:root {
+    --main-active-gold: #ffa500;
+  }
 .main-box{
     
     display:grid;
@@ -15,7 +18,7 @@
       ". footer . ";
       margin: auto;
       border-radius: 5px;
-      top:120px;
+    
         width: 1000px;
         height: 600px;
         background-color: rgba(12, 7, 7, 0.367);
@@ -34,15 +37,7 @@
 
 }
 
-.filter-box{
-    grid-area: content16;
-    justify-self: center;
-    align-self: center;
-    color: white;
-    border: grey solid 1px;
-    border-radius: 7px;
-    width: 75px;
-}
+
 .item-box{
     
     color: rgb(190, 186, 186);
@@ -176,7 +171,7 @@ grid-area: content1;
         width: 600px;
         height: 50px;
         display:grid;
-        grid-template-columns: 75px 50px 285px 1fr 30px 1fr;
+        grid-template-columns: 75px 50px 308px 55px 25px 1fr;
         grid-template-areas: 
         " content1 content2 . content3 content4 content5" ;
         margin-bottom: 4px;
@@ -210,13 +205,20 @@ grid-area: content1;
         align-self: center;
         grid-area: content3;
     }
+    .item-title-rarity:hover{
+        color: rgb(207, 207, 207);
+        cursor: pointer;
+    }
 
     .item-title-tear{
         color: rgba(207, 207, 207, 0.624);
         align-self: center;
         grid-area: content5;
     }
-
+    .item-title-tear:hover{
+        color: rgb(207, 207, 207);
+        cursor: pointer;
+    }
     .item-name{
         grid-area: content2;
         
@@ -354,7 +356,7 @@ grid-area: content1;
 
 
 .logo-spin{
-   
+ 
     opacity: 0.4;
     position: absolute;
     right:470px;
@@ -400,7 +402,7 @@ grid-area: content1;
     background-color: rgba(128, 128, 128, 0);
     font-size: large;
     border:rgba(128, 128, 128, 0) solid 1px ;
-
+cursor: pointer;
     color: rgba(255, 255, 255, 0.518);
     display: flex;
     align-items: center;
@@ -411,7 +413,7 @@ grid-area: content1;
 .page-btn-active{
     font-size:15px;
     background-color: rgba(128, 128, 128, 0);
-    
+    cursor: pointer;
    
     color: rgb(255, 253, 250);
     display: flex;
@@ -426,5 +428,12 @@ grid-area: content1;
 }
 .page-btn:hover{
     background-color: rgba(240, 255, 255, 0.405);
+    cursor: pointer;
 }
 
+.prev-btn{
+    cursor: pointer;
+}
+.next-btn{
+    cursor: pointer;
+}
