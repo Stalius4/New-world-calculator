@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { AiOutlineSearch} from "react-icons/ai";
+import {AiOutlineCheckSquare, AiOutlineBorder } from "react-icons/ai";
 import { IoIosArrowDown } from 'react-icons/io';
 import "./filter.css"
 
@@ -13,8 +13,15 @@ const [activeFilter, setActiveFilter] = useState(false)
 <div className="filter-box" onClick={()=> {setActiveFilter(!activeFilter)}}> Filter by:
 <i className={activeFilter ?'fas fa-angle-up drop-icon' : 'fas fa-angle-down drop-icon'} ></i>
 
-</div>
-<div className="open-filter">dsad</div>
+</div> {activeFilter ? <div className="open-filter">
+<div className="open-rarity"> <div > Rarity</div> <i className={activeFilter ?'fas fa-angle-up drop-icon' : 'fas fa-angle-down drop-icon'} ></i> </div>
+<div className="open-rarity-options"><AiOutlineBorder></AiOutlineBorder>Common</div>
+
+
+
+<div className="open-tear"> <div> Tear</div><i className={activeFilter ?'fas fa-angle-up drop-icon' : 'fas fa-angle-down drop-icon '} ></i></div>
+</div> : ""}
+
 
 </>
     )

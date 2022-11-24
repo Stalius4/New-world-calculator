@@ -14,7 +14,7 @@
     grid-template-rows: 50px 480px  1fr;
     grid-template-areas:
       ". content10 content16 "
-      ". content9 . "
+      ". content9 content17 "
       ". footer . ";
       margin: auto;
       border-radius: 5px;
