@@ -1,6 +1,11 @@
 
 :root {
     --main-active-gold: #ffa600f9;
+    --common:rgb(190, 186, 186);
+    --uncommon:rgb(0, 233, 8);
+    --rare:rgb(0,203,233);
+    --legendary:rgb(251, 144, 37);
+    --epic: rgb(239, 5, 211);
   }
 
 .filter-box{
@@ -84,18 +89,109 @@
     justify-content:space-between;
 }
 .open-rarity-options{
+    position: relative;
     display: flex;
-    justify-self: center;
-    align-self: center;
-    align-items:center;
+    flex-direction: column;
+margin-top: -1px;
+
+    align-items:start;
     color: white;
     width: 135px;
-    height: 25px;
-    border-radius: 5px 5px 0px 0px;
+    height: 120px;
+   
     background-color: rgb(30, 29, 29);
     border: rgba(128, 128, 128, 0.411) solid 1px;
-    padding: 3px 0px 5px 15px;
+    padding: 5px 0px 5px 15px;
     gap:5px;
-    
-    
 }
+    
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 02px;
+    cursor: pointer;
+    font-size: 12px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: relative;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: rgba(238, 238, 238, 0.03);
+    border: 1px solid white;
+    border-radius: 3px;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: rgb(0, 0, 0);
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 3px;
+    top: 1px;
+    width: 4px;
+    height: 7px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  .common{
+    color: var(--common);
+  }
+
+  .uncommon{
+    color: var(--uncommon);
+  }
+
+  .rare{
+    color: var(--rare);
+  }
+
+  .epic{
+    color: var(--epic);
+  }
+
+  .legendary{
+    color:var(--legendary);
+  }

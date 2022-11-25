@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import "./consumable.css"
-import nwlogo from "../Images/logo.png"
+// import nwlogo from "../Images/logo.png"
 import Pagination from "./pagination";
 import Filter from "./components/filter";
 import SortItems from "./components/top-sorting";
@@ -10,7 +10,7 @@ const Consumable= ({loading,setLoading ,consumableList, setConsumableList})=>{
   const [filtConsumableList, setFiltConsumableList] = useState([])
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
-
+  const [iconToggle, setIconToggle] =useState ({ name:0, rarity:0, tear:0})
 //pagination
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -51,8 +51,8 @@ useEffect (() => {
 
       return (
         <div className="main-box">
-<SortItems filtConsumableList={filtConsumableList} setFiltConsumableList={setFiltConsumableList} consumableList={consumableList} setCurrentPage={setCurrentPage} ></SortItems>
-            <Filter></Filter>
+<SortItems filtConsumableList={filtConsumableList} setFiltConsumableList={setFiltConsumableList} consumableList={consumableList} setCurrentPage={setCurrentPage} iconToggle={iconToggle} setIconToggle={setIconToggle} ></SortItems>
+            <Filter consumableList={consumableList} setFiltConsumableList={setFiltConsumableList} setCurrentPage={setCurrentPage} setIconToggle={setIconToggle}></Filter>
             <div className="map-item-box">
        {currentItem.map((item, index) => {
     
@@ -101,7 +101,7 @@ useEffect (() => {
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
-            <img src={nwlogo} alt="" className="logo-spin" />
+            {/* <img src={nwlogo} alt="" className="logo-spin" /> */}
       </div>
       </div>)
 }

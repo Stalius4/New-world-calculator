@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { AiFillCaretUp, AiFillCaretDown} from "react-icons/ai";
 
-const SortItems = ( {filtConsumableList, setFiltConsumableList, consumableList, setCurrentPage}) => {
+const SortItems = ( {filtConsumableList, setFiltConsumableList, iconToggle, setIconToggle}) => {
 
 const [sortToggle, setSortToggle] = useState ({name:true, rarity:true, tear:true})
 
 // if icon toggle = 0 no icon will be displayed, 1 ascending order, 2 descending order
-const [iconToggle, setIconToggle] =useState ({ name:0, rarity:0, tear:0})
+
 
 
   const sortName = () => {
@@ -102,20 +102,7 @@ const sortRarity = () =>{
  
 
   
-      const changeRarity = (e) => {
-       
-        const result = consumableList.filter(
-           // eslint-disable-next-line
-          ({ rarity }) => rarity == e.target.value
-         
-        );
-  
-        setFiltConsumableList(result);
-        console.log(result)
-       setCurrentPage(1)
-         //remove icon from name other sort button pressed
-         setIconToggle(0)
-      };
+
 
     return(
         <div className="top-sort-part">
