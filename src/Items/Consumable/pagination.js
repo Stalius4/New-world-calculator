@@ -13,7 +13,7 @@ const nextPage = () => {
     console.log(pageNumbers)
 if(pageNumbers.length> currentPage){
     setCurrentPage(currentPage+1)
-    console.log(currentPage, "current page")
+   
 }
 }
 
@@ -21,7 +21,7 @@ const previousPage = () => {
     console.log(pageNumbers)
 if( currentPage> 1){
     setCurrentPage(currentPage-1)
-    console.log(currentPage, "current page")
+  
 }
 }
 
