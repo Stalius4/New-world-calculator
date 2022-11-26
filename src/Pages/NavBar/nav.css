@@ -1,0 +1,27 @@
+
+
+
+
+
+
+
+.outer-box{
+
+    height: 260px;
+    background-image: url("/src/Items/Images/nw-city.jpg");
+    background-position: center;
+   background-position-y:55%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  border-bottom: rgba(246, 246, 246, 0.381) solid 2px;
+  display: flex;
+  align-items:center;
+  justify-content:end;
+  padding: 0px 150px 50px 0px;
+}
+
+.nw-logo{
+    width: 250px;
+    position: relative;
+ 
+}
