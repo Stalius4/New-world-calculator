@@ -17,10 +17,12 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 0.5fr 2.2fr 1fr ;
     grid-template-areas:
-      "nav nav nav nav"
+      ". nav nav ."
       ". . . main"
       "content1 . . .";
       transition: 0.2s ease-out;
+
+     
       
   
 }
@@ -33,14 +35,15 @@
     background-repeat: no-repeat;
     border-bottom: rgba(246, 246, 246, 0.381) solid 2px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: 40px  ;
     grid-template-areas:
-    "content1 nav nav main";
+    "content1 nav main";
     transition: 0.2s ease-out;
-
+    position:fixed;
+    width: 100%;
+    
 }
-
 
 .toggle-navbar-btn{
     justify-self: start;
@@ -99,24 +102,46 @@
     display: flex;
     justify-content:center;
     align-items:center;
+    position:fixed;
 }
+.navbar-mini{
+    grid-area: content2;
 
-.inner-navbar{
-    max-width: 1440px ;
-width: 1200px;
-
-
-}
-
-ul{
+    height: 40px;
+    background-color: rgba(153, 11, 11, 0.468);
+   
     display: flex;
+    justify-content:center;
+    align-items:center;
+    position:fixed;
+    
   
+}
+
+
+.ul-nav{
+    grid-area:nav;
+    display: flex;
+  z-index: 1;
     justify-content:center;
     list-style-type: none;
     font-size: 20px;
-    color: rgba(222, 237, 251, 0.782);
+    color: #deedfbc7;
+    position:fixed;
+    right: 35%;
 }
 
+.ul-nav-mini{
+    grid-area:nav;
+    display: flex;
+  z-index: 1;
+    justify-content:center;
+    list-style-type: none;
+    font-size: 20px;
+    color: #deedfbc7;
+    position:fixed;
+    right: 35%;
+}
 li{
     display: flex;
     justify-content:center;
@@ -138,3 +163,13 @@ li:hover{
     display: flex;
     gap: 5px;
 }
+
+.database-open{
+    position: absolute;
+  top:45px;
+   right: -50px;
+    width: 700px;
+    height: 200px;
+    background-color: aqua;
+}
+

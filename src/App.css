@@ -7,8 +7,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  height: 1000px;
-  display:grid;
+ display: flex;
+ flex-direction: column;
+ gap:50px;
+ height: 1000px;
+
 }
 
 
