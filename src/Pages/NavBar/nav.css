@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,300;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500&family=IM+Fell+DW+Pica&display=swap');
 
-
-
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500&family=Montserrat:ital,wght@0,400;0,500;1,400&display=swap');
 
 
 
@@ -77,7 +76,7 @@
     grid-area: main;
     width: 250px;
     position: relative;
-  
+    justify-self: center;
  
 }
 
@@ -142,7 +141,7 @@
     position:fixed;
     right: 35%;
 }
-li{
+ .nav-li{
     display: flex;
     justify-content:center;
     align-items:center;
@@ -151,12 +150,13 @@ li{
     height: 38px;
     font-family: 'IM Fell DW Pica', serif;
     font-size: 16px;
+   transition: ease 0.2s;
 }
-li:hover{
- 
+.nav-li:hover{
+
     color: rgb(240, 248, 255);
-    transform: scale(1.1);
-    transition: ease-in 0.2s;
+font-size: 22px;
+
 }
 
 .database-li{
@@ -164,12 +164,84 @@ li:hover{
     gap: 5px;
 }
 
-.database-open{
-    position: absolute;
-  top:45px;
-   right: -50px;
-    width: 700px;
+.database-open{ position: absolute;
+    top:390%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+    width: 1150px;
     height: 200px;
-    background-color: aqua;
+    background-image: linear-gradient( rgb(56, 55, 55), rgba(88, 80, 80, 0.341) );
+    color: black;
+    border: solid 1px #dde1e365;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 0.2fr;
+    grid-template-rows: 45px 1.5fr;
+    grid-template-areas:
+      "content2 content3 content4 content5 content6 content7"
+      "sidebar main main main . . ";
+
+      font-family: 'IM Fell DW Pica', serif;
+font-size: 13px;
+    color:rgb(211, 213, 214);
+    text-shadow: 1px 1px #181505;
+  
 }
 
+h4{
+    justify-self: center;
+    align-self: center;
+    /* border-bottom: 0.1px rgb(203, 192, 170) solid; */
+    border-width: 1px;
+    border-style: solid;
+    border-image: 
+      linear-gradient(
+        to left, 
+        rgba(231, 170, 4, 0.819),
+        rgba(231, 170, 4, 0.572),
+       
+     
+        rgba(231, 170, 4, 0.572)
+      )0 0 1 0 ;
+height: 22px;
+width: 185px;
+letter-spacing: 2.5px;
+}
+
+.close-btn{
+    align-self: start;
+    justify-self: end;
+    grid-area: content7;
+}
+
+.weapons-title{
+    grid-area: content2;
+}
+.tools-title{
+    grid-area: content3;
+}
+.apparel-title{
+    grid-area: content4;
+}
+.resources-title{
+    grid-area: content5;
+}
+.consumables-title{
+    grid-area: content6;
+}
+
+.weapon-list{
+    justify-content:center;
+    list-style-type: none;
+}
+
+.display-flex{
+    display: flex;
+    flex-direction: column;
+    padding-left: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    gap: 3px;
+    color: #a8a7a6;
+    text-shadow: 0.1px 0.5px #404b91;
+}
