@@ -5,6 +5,7 @@
 
 
 .outer-box{
+    min-height: 260px;
     height: 260px;
     background-image: url("/src/Items/Images/nw-city.jpg");
     background-position: center;
@@ -243,5 +244,5 @@ letter-spacing: 2.5px;
     font-size: 13px;
     gap: 3px;
     color: #a8a7a6;
-    text-shadow: 0.1px 0.5px #404b91;
+   
 }

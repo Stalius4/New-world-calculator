@@ -1,0 +1,12 @@
+
+
+.footer-box{
+    height: 260px;
+    background-image: url("/src/Items/Images/nw-city.jpg");
+    background-position: center;
+    background-position-y:82%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-top: rgba(246, 246, 246, 0.381) solid 2px;
+
+}
