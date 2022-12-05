@@ -19,16 +19,16 @@ const Consumable= ({loading,setLoading ,consumableList, setConsumableList})=>{
 //================================
 
 useEffect (() => {
-  // fetchPhotos(setRandomPic)
+
   const listConsumable =  async (setUserList) => {
     try {
-      setLoading(true);
+      // setLoading(true);
     const response = await fetch("http://localhost:5002/user/")
     const data = await response.json()
    
     setConsumableList(data.result[0].data)
     setFiltConsumableList(data.result[0].data);
-    setLoading(false);
+    // setLoading(false);
     if (!response.ok){
       throw new Error(response.statusText)
     }
@@ -38,6 +38,7 @@ useEffect (() => {
     }
   }
  listConsumable()
+ // eslint-disable-next-line
 }, [])
   
 

@@ -4,7 +4,7 @@
     --common:rgb(190, 186, 186);
     --uncommon:rgb(0, 233, 8);
     --rare:rgb(0,203,233);
-    --legendary:rgb(251, 144, 37);
+    --legendary:rgb(249, 149, 49);
     --epic: rgb(239, 5, 211);
   }
 
@@ -94,7 +94,7 @@
     flex-direction: column;
 margin-top: -1px;
 
-    align-items:start;
+justify-content: flex-start;
     color: white;
     width: 135px;
     height: 120px;
