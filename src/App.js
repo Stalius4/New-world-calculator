@@ -9,7 +9,7 @@ import Woodworking from './Pages/Crafting/Woodworking/woodworking';
 function App() {
   const [loading, setLoading] = useState(false);
 const [consumableList, setConsumableList] = useState ([])
-
+const [toggleNavbar, setToggleNavbar] = useState(true)
 
 
 
@@ -17,8 +17,8 @@ const [consumableList, setConsumableList] = useState ([])
   return (
     <div className="App">
    
-    <NavBar></NavBar>
-    <div className='content-box'>
+    <NavBar toggleNavbar={toggleNavbar} setToggleNavbar={setToggleNavbar}></NavBar>
+    <div className={toggleNavbar ?'content-box': "content-box-mini"}>
       <Woodworking> </Woodworking>
     </div>
 {/* <Consumable loading={loading} setLoading={setLoading}  consumableList={consumableList} setConsumableList={setConsumableList} ></Consumable> */}

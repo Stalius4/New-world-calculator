@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect , useState} from "react";
+import {LumberChart, TimberChart ,WyrdwoodPlank, IronwoodPlank, Greenwood, Agedwood, Wyrdwood, Ironwood} from "./chart";
 import { createPriceList, listTimberPrice } from "./utilities";
 
 import "./woodworking.css";
@@ -14,7 +15,8 @@ const Woodworking = () => {
         greenWood:"",
         agedWood:"",
         wyrdWood:"",
-        ironWood:""
+        ironWood:"",
+     
     }
 const [timberList, setTimberList] = useState(initialValue)
 
@@ -29,101 +31,100 @@ const handleChange = (e) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setTimberList(timberList);
-    createPriceList(timberList.timber, timberList.lumber, timberList.wyrdWoodPlank,  timberList.ironWoodPlank, timberList.greenWood, timberList.agedWood, timberList.wyrdWood, timberList.ironWood)
+    createPriceList(timberList.timber, timberList.lumber, timberList.wyrdWoodPlank,  timberList.ironWoodPlank, timberList.greenWood, timberList.agedWood, timberList.wyrdWood, timberList.ironWood, )
   };
+
 
 useEffect(()=>{
 listTimberPrice(setDisplayTimberList)
 
+
+
+
+
+
+
+
 }, [])
 
+// find all date key values in array of objects and slice it
+const newArr = displayTimberList.map((item) => {
+    return {...item, date: item.date.slice(0,10)};
+ })
     return(
 
 
 
-        <div >
-             <form className="timber-list"  onSubmit={handleSubmit}>
-        <label >
-          Timber
-          <input
-            type="text"
-            onChange={(e)=>handleChange(e)}
-            value={timberList.timber}
-            name="timber"
-          />
-        </label>
-        <label >
-          Lumber
-          <input
-            type="text"
-            onChange={(e)=>handleChange(e)}
-            value={timberList.lumber}
-            name="lumber"
-          />
-        </label>
-        <label >
-        Wyrdwood Plank
-          <input
-            type="text"
-            onChange={(e)=>handleChange(e)}
-            value={timberList.wyrdWoodPlank}
-            name="wyrdWoodPlank"
-          />
-        </label>
-        <label >
-        Ironwood Plank
-          <input
-            type="text"
-            onChange={(e)=>handleChange(e)}
-            value={timberList.ironWoodPlank}
-            name="ironWoodPlank"
-          />
-        </label>
-        <label >
-        greenWood
-          <input
-            type="text"
-            onChange={(e)=>handleChange(e)}
-            value={timberList.greenWood}
-            name="greenWood"
-          />
-        </label>
-        <label >
-        agedWood
-          <input
-            type="text"
-            onChange={(e)=>handleChange(e)}
-            value={timberList.agedWood}
-            name="agedWood"
-          />
-        </label>
-        <label >
-        wyrdWood
-          <input
-            type="text"
-            onChange={(e)=>handleChange(e)}
-            value={timberList.wyrdWood}
-            name="wyrdWood"
-          />
-        </label>
-        <label >
-        ironWood
-          <input
-            type="text"
-            onChange={(e)=>handleChange(e)}
-            value={timberList.ironWood}
-            name="ironWood"
-          />
-        </label>
-        <input
-         
-          type="submit"
-          value="Submit"
-        />
+    <div className="woodworking-grid">
+        <form className="timber-list"  onSubmit={handleSubmit}>
+            <label> Ironwood Plank
+                <input type="number" 
+                    oninput="this.value=this.value.slice(0,this.maxLength)"
+                      onChange={(e)=>handleChange(e)} value={timberList.ironWoodPlank} name="ironWoodPlank" />
+            </label>
+
+            <label> Wyrdwood Plank
+                <input type="number"   onChange={(e)=>handleChange(e)} value={timberList.wyrdWoodPlank} name="wyrdWoodPlank"/>
+            </label>
+
+            <label> Lumber
+                <input type="number"   onChange={(e)=>handleChange(e)} value={timberList.lumber} name="lumber"/>
+            </label>
+
+            <label> Timber
+                <input type="number"   onChange={(e)=>handleChange(e)} value={timberList.timber} name="timber"/>
+            </label>
+
+            <label> Greenwood
+                <input type="number"   onChange={(e)=>handleChange(e)} value={timberList.greenWood} name="greenWood"/>
+            </label>
+
+            <label> Agedwood
+                <input type="number"   onChange={(e)=>handleChange(e)} value={timberList.agedWood} name="agedWood"/>
+            </label>
+
+            <label> Wyrdwood
+                <input type="number"   onChange={(e)=>handleChange(e)}  value={timberList.wyrdWood}  name="wyrdWood" />
+            </label>
+
+            <label> IronWood
+                <input type="number"   onChange={(e)=>handleChange(e)}  value={timberList.ironWood} name="ironWood"/>
+            </label>
+
+
+            <input className="submit-btn" type="submit" value="Submit"/>
       </form>
-      
-      
-      
+
+      {/* {displayTimberList.map((item, index)=> {
+
+        return (
+            <div>{item.timber_price}</div>
+        )
+      })} */}
+<div className="chart timber"><h1 className="chart-titles">Timber</h1>
+      <TimberChart timberData={newArr}></TimberChart>
+      </div>
+      <div className="chart lumber"><h1 className="chart-titles">Lumber</h1>
+      <LumberChart timberData={newArr}></LumberChart>
+      </div>
+      <div className="chart wyrdwood-plank"><h1 className="chart-titles">Wyrdwood Plank</h1>
+      <WyrdwoodPlank timberData={newArr}></WyrdwoodPlank>
+      </div>
+      <div className="chart ironwood-plank"><h1 className="chart-titles">Ironwood Plank</h1>
+      <IronwoodPlank timberData={newArr}></IronwoodPlank>
+      </div>
+      <div className="chart greenwood"><h1 className="chart-titles">Green Wood</h1>
+      <Greenwood timberData={newArr}></Greenwood>
+      </div>
+      <div className="chart agedwood"><h1 className="chart-titles">Aged Wood</h1>
+      <Agedwood timberData={newArr}></Agedwood>
+      </div>
+      <div className="chart wyrdwood"><h1 className="chart-titles">Wyrd Wood</h1>
+      <Wyrdwood timberData={newArr}></Wyrdwood>
+      </div>
+      <div className="chart ironwood"><h1 className="chart-titles">Iron Wood</h1>
+      <Ironwood timberData={newArr}></Ironwood>
+      </div>
       </div>
 
 

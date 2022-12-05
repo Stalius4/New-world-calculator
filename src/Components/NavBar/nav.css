@@ -42,6 +42,7 @@
     transition: 0.2s ease-out;
     position:fixed;
     width: 100%;
+    z-index: 1;
     
 }
 
@@ -106,7 +107,7 @@
 }
 .navbar-mini{
     grid-area: content2;
-
+    z-index: 1;
     height: 40px;
     background-color: rgba(153, 11, 11, 0.468);
    
@@ -165,7 +166,8 @@ font-size: 22px;
     gap: 5px;
 }
 
-.database-open{ position: absolute;
+.database-open{ 
+    position: absolute;
     top:390%;
     left: 52%;
     transform: translate(-50%, -50%);
@@ -185,7 +187,7 @@ font-size: 22px;
 font-size: 13px;
     color:rgb(211, 213, 214);
     text-shadow: 1px 1px #181505;
-  
+    z-index: 1;
 }
 
 h4{

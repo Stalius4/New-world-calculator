@@ -4,9 +4,9 @@ export const listTimberPrice =  async (setDisplayTimberList) => {
     try {
     const response = await fetch("http://localhost:5002/timber/")
     const data = await response.json()
-    console.log(response,"resp")
+    
     setDisplayTimberList(data.result)
-    console.log(data.result)
+    // console.log(data.result)
     if (!response.ok){
       throw new Error(response.statusText)
     }
@@ -16,8 +16,9 @@ export const listTimberPrice =  async (setDisplayTimberList) => {
     }
   }
 
-  export const createPriceList = async (timber, lumber,wyrdwoodPlank,ironwoodPlank,greenwood,agedwood,wyrdwood,ironwood,) => {
+  export const createPriceList = async (timber, lumber,wyrdwoodPlank,ironwoodPlank,greenwood,agedwood,wyrdwood,ironwood) => {
     try {
+    
       const res = await fetch("http://localhost:5002/timber/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -30,6 +31,7 @@ export const listTimberPrice =  async (setDisplayTimberList) => {
             agedwood_price: agedwood,
             wyrdwood_price: wyrdwood,
             ironwood_price: ironwood,
+           
         }),
       });
       const data = await res.json();

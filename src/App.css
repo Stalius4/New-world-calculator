@@ -3,38 +3,58 @@
 
 .App {
   background-image: url("/src/Items/Images/texture-bottom.jpg");
+  background-position: 10%;
   background-size: auto;
-  margin: 0;
+  width: auto;
+ 
   padding: 0;
   box-sizing: border-box;
  display: flex;
  flex-direction: column;
  gap:50px;
- height: 1000px;
- min-height: 1250px;
+
+ 
 
 }
 
 .content-box{
+  margin: auto;
 
-    
-    display:grid;
-    grid-template-columns: 0.5fr 600px 0.5fr ;
-    grid-template-rows: 50px 480px  1fr;
-    grid-template-areas:
-      ". content10 content16 "
-      ". content9 content17 "
-      ". footer . ";
-      margin: auto;
-      border-radius: 5px;
-    
-        width: 1400px;
-        height: 800px;
-        background-color: rgba(12, 7, 7, 0.367);
-        border-width: 1px;
-        border-style: solid;
-        border-image: 
-          linear-gradient(
+  border-radius: 5px;
+  padding: 15px ;
+  padding-top: 50px;
+  width: auto;
+  max-width: 1500px;
+  height: 1200px;
+  background-color: rgba(12, 7, 7, 0.367);
+  border-width: 1px;
+  border-style: solid;
+  border-image: 
+    linear-gradient(
+          to left, 
+          rgba(19, 168, 66, 0),
+          rgba(255, 166, 0, 0.411),
+          #ffa500, 
+          rgba(255, 166, 0, 0.367),
+          rgba(19, 168, 66, 0)
+        ) 1 0 1 0 ;
+}
+
+
+.content-box-mini{
+    margin: auto;
+    margin-top: 120px;
+    border-radius: 5px;
+    padding: 15px;
+    padding-top: 50px;
+    width: auto;
+    max-width: 1500px;
+    height: 1200px;
+    background-color: rgba(12, 7, 7, 0.367);
+    border-width: 1px;
+    border-style: solid;
+    border-image: 
+      linear-gradient(
             to left, 
             rgba(19, 168, 66, 0),
             rgba(255, 166, 0, 0.411),
@@ -42,8 +62,6 @@
             rgba(255, 166, 0, 0.367),
             rgba(19, 168, 66, 0)
           ) 1 0 1 0 ;
-
-
 }
 
 

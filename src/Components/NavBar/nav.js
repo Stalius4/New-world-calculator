@@ -3,9 +3,9 @@ import { useState } from "react";
 import "./nav.css"
 import  logo from "./NW-logo.svg"
 import {AiOutlineClose  } from 'react-icons/ai';
-const NavBar = () => {
+const NavBar = ({toggleNavbar, setToggleNavbar}) => {
 const [toggleDatabase, setToggleDatabase] = useState (false)
-const [toggleNavbar, setToggleNavbar] = useState(true)
+
     return(
 
         <div className={toggleNavbar ? "outer-box" : "outer-box-mini"}>
