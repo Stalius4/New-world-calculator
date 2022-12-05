@@ -7,21 +7,21 @@ input::-webkit-inner-spin-button {
 
 
 .woodworking-grid{
-    padding: 0px 30px 30px 30px;
-  position: relative;
-    height:1000px;
+   padding-left: 15px;
+ 
+    height:1400px;
     width: 1500px;
    
     display: grid;
     grid-template-columns:  350px 350px 350px 350px;
-    grid-template-rows: 220px 220px 220px 220px 220px;
+    grid-template-rows: 220px 220px  80px 220px 220px;
     grid-template-areas:
       "content2 content3 content1 content1 "
       "content2 content3  content1 content1  "
       "content2 content3  content1 content1  "
       "content10 content11 content12 content13"
       "content14 content15  content16 content17";
-     
+      grid-row-gap: 25px;
 
 }
 .timber-list{
@@ -69,9 +69,9 @@ input[type=number] {
 }
 
 .chart{
-   
-    margin-left: -20px;
     grid-area: content7;
+    display: flex;
+    flex-direction: column;
  
 }
 
@@ -81,31 +81,68 @@ input[type=number] {
     font-size: 13px;
     text-align: center;
     color: #a8a7a6;
-    margin-bottom: -60px;
 
 }
 
 .ironwood-plank{
-    grid-area: content10;
+    grid-area: content17;
 }
 .wyrdwood-plank{
-    grid-area: content11;
-}
-.lumber{
-    grid-area: content12;
-}
-.timber{
-    grid-area: content13;
-}
-.greenwood{
-    grid-area: content14;
-}
-.agedwood{
-    grid-area: content15;
-}
-.wyrdwood{
     grid-area: content16;
 }
+.lumber{
+    grid-area: content15;
+}
+.timber{
+    grid-area: content14;
+ 
+}
+.greenwood{
+    grid-area: content10;
+}
+.agedwood{
+    grid-area: content11;
+}
+.wyrdwood{
+    grid-area: content12;
+}
 .ironwood{
-    grid-area: content17;
+    grid-area: content13;
+}
+
+.timber-image{
+    height: 45px;
+    border-radius: 50%;
+    border: grey 1px solid;
+}
+
+
+
+.timber-title{
+   
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: start;
+    color: #a8a7a6;
+    align-self: center;
+    justify-self: start;
+    grid-area:  content21;
+
+}
+.timber-chart{
+    grid-area: content20;
+    place-self: center;
+}
+
+.display-flex-wood{
+    display: flex;
+    flex-direction: row;
+
+    justify-content:center;
+    align-items:center;
+    position: relative;
+    top:25px;
+    left: 15px;
+    gap: 10px;
 }

@@ -53,12 +53,17 @@ const renderCustomBarLabel = ({ payload, x, y, width, height, value }) => {
 
     return (
 
-            <ResponsiveContainer width={350} height={220}>
+          
             <LineChart
-              width={500}
-              height={100}
+            width={350}
+            height={200}
               data={timberData}
-           
+              margin={{
+                top: 0,
+                right:10,
+                left: 10,
+                bottom: 0,
+              }}
             >
               <CartesianGrid strokeDasharray="5 5"  stroke="#8e8f9066"/>
               <XAxis dataKey="date" stroke="#ffffff93" />
@@ -69,7 +74,7 @@ const renderCustomBarLabel = ({ payload, x, y, width, height, value }) => {
               {/* <Line type="monotone" dataKey="lumber_price" stroke="#82ca9d" label={renderCustomBarLabel} />
               <Line type="monotone" dataKey="wyrdwoodplank_price" stroke="#82ca9d" label={renderCustomBarLabel} /> */}
             </LineChart>
-          </ResponsiveContainer>
+        
     );
 
 }
@@ -79,12 +84,17 @@ const LumberChart = ({timberData}) => {
 
     return (
 
-            <ResponsiveContainer width={350} height={220}>
+
             <LineChart
-              width={500}
-              height={100}
+            width={350}
+            height={200}
               data={timberData}
-           
+              margin={{
+                top: 0,
+                right:10,
+                left: 10,
+                bottom: 0,
+              }}
             >
               <CartesianGrid strokeDasharray="5 5"  stroke="#8e8f9066"/>
               <XAxis dataKey="date" stroke="#ffffff93" />
@@ -95,7 +105,7 @@ const LumberChart = ({timberData}) => {
               {/* <Line type="monotone" dataKey="lumber_price" stroke="#82ca9d" label={renderCustomBarLabel} />
               <Line type="monotone" dataKey="wyrdwoodplank_price" stroke="#82ca9d" label={renderCustomBarLabel} /> */}
             </LineChart>
-          </ResponsiveContainer>
+    
     );
 
 }
@@ -104,12 +114,17 @@ const WyrdwoodPlank = ({timberData}) => {
 
     return (
 
-            <ResponsiveContainer width={350} height={220}>
+   
             <LineChart
-              width={500}
-              height={100}
+              width={350}
+              height={200}
               data={timberData}
-           
+              margin={{
+                top: 0,
+                right:10,
+                left: 10,
+                bottom: 0,
+              }}
             >
               <CartesianGrid strokeDasharray="5 5"  stroke="#8e8f9066"/>
               <XAxis dataKey="date" stroke="#ffffff93" />
@@ -120,7 +135,7 @@ const WyrdwoodPlank = ({timberData}) => {
               {/* <Line type="monotone" dataKey="lumber_price" stroke="#82ca9d" label={renderCustomBarLabel} />
               <Line type="monotone" dataKey="wyrdwoodplank_price" stroke="#82ca9d" label={renderCustomBarLabel} /> */}
             </LineChart>
-          </ResponsiveContainer>
+
     );
 
 }
@@ -129,12 +144,17 @@ const IronwoodPlank = ({timberData}) => {
 
     return (
 
-            <ResponsiveContainer width={350} height={220}>
+     
             <LineChart
-              width={500}
-              height={100}
+              width={350}
+              height={200}
               data={timberData}
-           
+              margin={{
+                top: 0,
+                right:10,
+                left: 10,
+                bottom: 0,
+              }}
             >
               <CartesianGrid strokeDasharray="5 5"  stroke="#8e8f9066"/>
               <XAxis dataKey="date" stroke="#ffffff93" />
@@ -145,7 +165,7 @@ const IronwoodPlank = ({timberData}) => {
               {/* <Line type="monotone" dataKey="lumber_price" stroke="#82ca9d" label={renderCustomBarLabel} />
               <Line type="monotone" dataKey="wyrdwoodplank_price" stroke="#82ca9d" label={renderCustomBarLabel} /> */}
             </LineChart>
-          </ResponsiveContainer>
+         
     );
 
 }
@@ -154,12 +174,17 @@ const Greenwood = ({timberData}) => {
 
     return (
 
-            <ResponsiveContainer width={350} height={220}>
+      
             <LineChart
-              width={500}
-              height={100}
+              width={350}
+              height={200}
               data={timberData}
-           
+              margin={{
+                top: 0,
+                right:10,
+                left: 10,
+                bottom: 0,
+              }}
             >
               <CartesianGrid strokeDasharray="5 5"  stroke="#8e8f9066"/>
               <XAxis dataKey="date" stroke="#ffffff93" />
@@ -170,7 +195,7 @@ const Greenwood = ({timberData}) => {
               {/* <Line type="monotone" dataKey="lumber_price" stroke="#82ca9d" label={renderCustomBarLabel} />
               <Line type="monotone" dataKey="wyrdwoodplank_price" stroke="#82ca9d" label={renderCustomBarLabel} /> */}
             </LineChart>
-          </ResponsiveContainer>
+    
     );
 
 }
@@ -179,23 +204,28 @@ const Agedwood = ({timberData}) => {
 
     return (
 
-            <ResponsiveContainer width={350} height={220}>
+ 
             <LineChart
-              width={500}
-              height={100}
+              width={350}
+              height={200}
               data={timberData}
-           
+              margin={{
+                top: 0,
+                right:10,
+                left: 10,
+                bottom: 0,
+              }}
             >
               <CartesianGrid strokeDasharray="5 5"  stroke="#8e8f9066"/>
               <XAxis dataKey="date" stroke="#ffffff93" />
-              <YAxis domain={[0, 0.6]} tickCount={20}  stroke="#ffffff93" />
+              <YAxis domain={[0.15, 0.4]} tickCount={20}  stroke="#ffffff93" />
               <Tooltip />
               <Legend verticalAlign="top" height={36} iconSize={50} iconType={"none"}/>
               <Line type="monotone" dataKey="agedwood_price" stroke="orange" label={renderCustomBarLabel} activeDot={{ r: 8 }} />
               {/* <Line type="monotone" dataKey="lumber_price" stroke="#82ca9d" label={renderCustomBarLabel} />
               <Line type="monotone" dataKey="wyrdwoodplank_price" stroke="#82ca9d" label={renderCustomBarLabel} /> */}
             </LineChart>
-          </ResponsiveContainer>
+      
     );
 
 }
@@ -204,23 +234,28 @@ const Wyrdwood = ({timberData}) => {
 
     return (
 
-            <ResponsiveContainer width={350} height={220}>
+ 
             <LineChart
-              width={500}
-              height={100}
+              width={350}
+              height={200}
               data={timberData}
-           
+              margin={{
+                top: 0,
+                right:10,
+                left: 10,
+                bottom: 0,
+              }}
             >
               <CartesianGrid strokeDasharray="5 5"  stroke="#8e8f9066"/>
               <XAxis dataKey="date" stroke="#ffffff99" />
-              <YAxis domain={[1, 2]} tickCount={20}  stroke="#ffffff80" />
+              <YAxis domain={[1.15, 1.8]} tickCount={20}  stroke="#ffffff80" />
               <Tooltip />
               <Legend verticalAlign="top" height={36} iconSize={50} iconType={"none"}/>
               <Line type="monotone" dataKey="wyrdwood_price" stroke="orange" label={renderCustomBarLabel} activeDot={{ r: 8 }} />
               {/* <Line type="monotone" dataKey="lumber_price" stroke="#82ca9d" label={renderCustomBarLabel} />
               <Line type="monotone" dataKey="wyrdwoodplank_price" stroke="#82ca9d" label={renderCustomBarLabel} /> */}
             </LineChart>
-          </ResponsiveContainer>
+
     );
 
 }
@@ -230,23 +265,29 @@ const Ironwood = ({timberData}) => {
 
     return (
 
-            <ResponsiveContainer width={350} height={220}>
+
             <LineChart
-              width={500}
-              height={100}
+              width={350}
+              height={200}
               data={timberData}
-           
+              margin={{
+                top: 0,
+                right:10,
+                left: 10,
+                bottom: 0,
+              }}
             >
               <CartesianGrid strokeDasharray="5 5"  stroke="#8e8f9066"/>
               <XAxis dataKey="date" stroke="#ffffff93" />
               <YAxis domain={[1, 2]} tickCount={20}  stroke="#ffffff93" />
               <Tooltip />
-              <Legend verticalAlign="top" height={36} iconSize={50} iconType={"none"}/>
+              <Legend verticalAlign="top"  height={36} iconSize={50} iconType={"none"}            
+              />
               <Line type="monotone" dataKey="ironwood_price" stroke="orange" label={renderCustomBarLabel} activeDot={{ r: 8 }} />
               {/* <Line type="monotone" dataKey="lumber_price" stroke="#82ca9d" label={renderCustomBarLabel} />
               <Line type="monotone" dataKey="wyrdwoodplank_price" stroke="#82ca9d" label={renderCustomBarLabel} /> */}
             </LineChart>
-          </ResponsiveContainer>
+
     );
 
 }

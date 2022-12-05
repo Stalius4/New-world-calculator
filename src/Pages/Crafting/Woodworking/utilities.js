@@ -35,9 +35,26 @@ export const listTimberPrice =  async (setDisplayTimberList) => {
         }),
       });
       const data = await res.json();
-      console.log(data)
+ 
     } catch (error) {
       console.log(error);
   console.log(error.keyValue,"keyValue")
 
   };}
+
+
+export const timberIcons =  async (setTimberIcon) => {
+    try {
+    const response = await fetch("http://localhost:5002/user/")
+    const data = await response.json()
+    
+    setTimberIcon(data.result[1].timber)
+   
+    if (!response.ok){
+      throw new Error(response.statusText)
+    }
+    } 
+    catch (err) {
+      
+    }
+  }
