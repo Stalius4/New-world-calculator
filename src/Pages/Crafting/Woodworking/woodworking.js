@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect , useState} from "react";
 import {LumberChart, TimberChart ,WyrdwoodPlank, IronwoodPlank, Greenwood, Agedwood, Wyrdwood, Ironwood} from "./chart";
-import { createPriceList, listTimberPrice, timberIcons } from "./utilities";
+import { createPriceList, listTimberPrice } from "./utilities";
 
 import "./woodworking.css";
 
@@ -22,7 +22,7 @@ const [timberPriceInput, setTimberPriceInput] = useState(initialValue)
 //get all timber prices from db and display ir on charts
 const [displayTimberList, setDisplayTimberList] = useState([])
 //get all timber icons from db
-const [timberIcon, setTimberIcon] = useState([])
+
 
 
 
@@ -40,7 +40,7 @@ const handleChange = (e) => {
 
 useEffect(()=>{
 listTimberPrice(setDisplayTimberList)
-timberIcons(setTimberIcon)
+
 const findIndex = () => {
    return  displayTimberList.at(-1)
 }
@@ -50,7 +50,7 @@ findIndex()
 
 
 
-}, [])
+}, [displayTimberList])
 
 // find all date key values in array of objects and slice it
 const newArr = displayTimberList.map((item) => {

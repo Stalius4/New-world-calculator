@@ -35,7 +35,7 @@ export const listTimberPrice =  async (setDisplayTimberList) => {
         }),
       });
       const data = await res.json();
- 
+ console.log(data)
     } catch (error) {
       console.log(error);
   console.log(error.keyValue,"keyValue")

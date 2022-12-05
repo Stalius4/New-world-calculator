@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react';
-import { useEffect } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import React from 'react';
+
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 
 
 
@@ -8,47 +8,8 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 const renderCustomBarLabel = ({ payload, x, y, width, height, value }) => {
     return <text x={x } y={y} fill="#fafafa" textAnchor="middle" dy={-6}>{`${value}`}</text>;
   };
-  const data = [
-    {
-      name: 'Monday',
-    //   uv: timberData.map((item, index, arr)=> {
-
-    //     return  item.timber_price
-    //   })
   
-    },
-    {
-      name: 'Tuesday',
-      uv: 1.5,
-  
-    },
-    {
-      name: 'Wednesday',
-      uv: 1.5,
-  
-    },
-    {
-      name: 'Thursday',
-      uv: 1.3,
-  
-    },
-    {
-      name: 'Friday',
-      uv: 1.2,
-  
-    },
-    {
-      name: 'Saturday',
-      uv:1.1,
-  
-    },
-    {
-      name: 'Sunday',
-      uv: 2.5,
-      // pv: 4300,
-      // amt: 2100,
-    },
-  ];
+ 
  const TimberChart = ({timberData}) => {
 
     return (

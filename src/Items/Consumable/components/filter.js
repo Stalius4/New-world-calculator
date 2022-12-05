@@ -50,11 +50,11 @@ const [tierValue, setTierValue] = useState([])
       setIconToggle(0);
       setCurrentPage(1);
     }
-  }, [rarityValue, tierValue]);
+  }, [rarityValue, tierValue, consumableList, setCurrentPage, setFiltConsumableList, setIconToggle ]);
 
 
 
-  
+
 const rarityFilter = (e) => {
   if (e.target.checked) {
     setRarityValue((prev) => [...prev, Number(e.target.value)]);

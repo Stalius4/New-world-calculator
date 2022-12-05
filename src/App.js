@@ -1,14 +1,16 @@
 
 import './App.css';
-import React, { useState, useEffect} from "react";
-import Consumable from './Items/Consumable/consumable';
-import Mote from './Items/Motes/motes';
+import React, { useState,
+  //  useEffect
+  } from "react";
+// import Consumable from './Items/Consumable/consumable';
+// import Mote from './Items/Motes/motes';
 import NavBar from './Components/NavBar/nav';
 import Footer from './Components/Footer/footer';
 import Woodworking from './Pages/Crafting/Woodworking/woodworking';
 function App() {
-  const [loading, setLoading] = useState(false);
-const [consumableList, setConsumableList] = useState ([])
+//   const [loading, setLoading] = useState(false);
+// const [consumableList, setConsumableList] = useState ([])
 const [toggleNavbar, setToggleNavbar] = useState(true)
 
 
