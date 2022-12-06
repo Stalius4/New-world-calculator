@@ -16,9 +16,9 @@ input::-webkit-inner-spin-button {
     grid-template-columns:  350px 350px 350px 350px;
     grid-template-rows: 220px 220px  80px 220px 220px;
     grid-template-areas:
-      "content2 content3 content1 content1 "
-      "content2 content3  content1 content1  "
-      "content2 content3  content1 content1  "
+      "content2 content2 content3 content4 "
+      "content2 content2  content5 content6  "
+      "content9 content9  content9 content9  "
       "content10 content11 content12 content13"
       "content14 content15  content16 content17";
       grid-row-gap: 25px;
@@ -145,4 +145,200 @@ input[type=number] {
     top:25px;
     left: 15px;
     gap: 10px;
+}
+
+.market-title{
+    grid-area: content9;
+    text-align: center;
+    align-self: end;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    color: #ccc8c5;
+    border-width: 2px;
+    border-style: solid;
+    border-image: 
+      linear-gradient(
+        to left, 
+        rgba(196, 196, 195, 0),
+        rgba(196, 196, 195, 0.416),
+        rgb(209, 209, 209),
+        rgb(209, 209, 209),
+        rgba(196, 196, 195, 0.416),
+        rgba(196, 196, 195, 0)
+      )0 0 1 0 ;
+    padding-bottom: 10px;
+}
+
+
+.lumber-refining-box{
+    color:orange;
+    grid-area: content4;
+    background-color: rgba(245, 244, 244, 0.303);
+    width: 350px;
+    height:220px;
+}
+.wyrdwood-refining-box{
+    color:orange;
+    grid-area: content5;
+    background-color: rgba(245, 244, 244, 0.303);
+    width: 350px;
+    height:220px;
+}
+.ironwood-refining-box{
+    color:orange;
+    grid-area: content6;
+    background-color: rgba(245, 244, 244, 0.303);
+    width: 350px;
+    height:220px;
+}
+
+
+.timber-refining-box{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    color: #a8a7a6;
+    grid-area: content3;
+    width: 320px;
+    height:220px;
+    justify-self: center;
+    
+}
+
+
+
+.refining-title-flex{
+    height: 37px;
+   
+    display: grid;
+    grid-template-columns: 55px 1fr 1fr 1fr 1fr;
+    grid-template-rows: 15px 15px ;
+    grid-template-areas:
+      "timber-img timber-title  . content3 content4 "
+      "timber-img timber-title qty  market refining ";
+  
+      border-width:1px;
+      border-style: solid;
+      border-image: 
+        linear-gradient(
+          to left, 
+          rgba(196, 196, 195, 0),
+          rgba(196, 196, 195, 0.416),
+          rgba(209, 209, 209, 0.544),
+          rgba(209, 209, 209, 0.544),
+          rgba(196, 196, 195, 0.416),
+          rgba(196, 196, 195, 0)
+        )0 0 1 0 ;
+    padding: 10px;
+
+}
+.refining-timber-image{
+    height: 45px;
+    grid-area: timber-img;
+    border-radius: 50%;
+    border: grey 1px solid;
+    align-self: center;
+    justify-self: start;
+
+}
+
+.refining-title-timber{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: #a8a7a6;
+    align-self: center;
+    grid-area: timber-title;
+}
+
+
+.qty{
+
+    grid-area: qty;
+    justify-self: end;
+}
+
+.market{
+
+    grid-area: market;
+    justify-self: end;
+}
+.refining{
+    grid-area: refining;
+    justify-self: end;
+}
+
+.refining-info-grid{
+    height: 55px;
+   padding-top: 12px;
+display: grid;
+grid-template-columns: 55px 100px 20px 1fr 1fr;
+grid-template-rows: 22px 30px ;
+grid-template-areas:
+ 
+  "greenwood-img greenwood-title greenwood-qty  market refining "
+  ". .  timber-total timber-market-price timber-refining-price "
+  ;
+  gap: 5px;
+  color: #ccc8c5;
+  border-width: 0.1px;
+  border-style: solid;
+  border-image: 
+    linear-gradient(
+      to left, 
+      rgba(196, 196, 195, 0),
+      rgba(196, 196, 195, 0.701),
+      rgba(196, 196, 195, 0.942),
+      rgba(196, 196, 195, 0.701),
+      rgba(196, 196, 195, 0.05),
+      rgba(209, 209, 209, 0),
+      rgba(209, 209, 209, 0),
+      rgba(196, 196, 195, 0),
+      rgba(196, 196, 195, 0)
+    )0 0 1 0 ;
+}
+
+
+
+.greenwood-img{
+        height: 30px;
+        border-radius: 50%;
+        border: grey 1px solid;
+        grid-area: greenwood-img;
+        align-self: center;
+        justify-self: end;
+}
+
+.greenwood-title-info{
+    align-self: center;
+    grid-area: greenwood-title;
+    font-size: 12px;
+
+}
+
+.greenwood-qty{
+    grid-area: greenwood-qty;
+    align-self: center;
+    justify-self:center;
+    
+}
+
+.timber-market-price{
+    padding-left: 5px;
+    grid-area:  timber-market-price;
+    align-self: center;
+    justify-self:center;
+}
+
+.timber-refining-price{
+    grid-area:  timber-refining-price;
+    align-self: center;
+    justify-self:center;
+}
+
+.timber-total{
+    grid-area: timber-total;
+    align-self: center;
+    justify-self:end;
 }

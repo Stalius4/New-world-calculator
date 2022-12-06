@@ -117,7 +117,7 @@ const newArr = displayTimberList.map((item) => {
       </div>
 
 
-
+<h2 className="market-title">Timber market prices</h2>
 
 
     <div className="chart ironwood-plank">
@@ -168,6 +168,36 @@ const newArr = displayTimberList.map((item) => {
         </div>
       <Ironwood timberData={newArr}></Ironwood>
       </div>
+
+
+<div className="timber-refining-box"> 
+        <div className="refining-title-flex">
+            <img className="refining-timber-image"src={"https://cdn.nwdb.info/db/images/live/v18/icons/items/resource/timbert2.png" } alt="sd"/>
+            <h1 className="refining-title-timber">Timber</h1>
+            <p className="qty">Qty. </p>
+                <p className="market">Market </p>
+                <p className="refining">Refine </p>
+            </div>
+           
+                <div className="refining-info-grid">
+            <img className="greenwood-img"src={"https://cdn.nwdb.info/db/images/live/v18/icons/items/resource/woodt1.png" } alt="sd"/>
+            <p className="greenwood-title-info"> Green Wood</p>
+            <div className="greenwood-qty">4</div>
+            <div className="timber-total">Total:</div>
+            <div className="timber-market-price">4.2</div>
+            <div className="timber-refining-price">0.15</div>
+        </div>
+
+
+         
+       </div>
+<div className="lumber-refining-box">Lumber</div>
+<div className="wyrdwood-refining-box">ds</div>
+<div className="ironwood-refining-box">ds</div>
+
+
+
+
       </div>
 
     
