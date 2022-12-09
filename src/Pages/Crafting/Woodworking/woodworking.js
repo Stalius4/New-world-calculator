@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect , useState} from "react";
-import {LumberChart, TimberChart ,WyrdwoodPlank, IronwoodPlank, Greenwood, Agedwood, Wyrdwood, Ironwood} from "./chart";
-import { createPriceList, listTimberPrice } from "./utilities";
+import { TimberChart } from "./components/chart";
+import { createPriceList, listTimberPrice, latestTimberPrice } from "./utilities";
 
 import "./woodworking.css";
 
@@ -22,6 +22,7 @@ const [timberPriceInput, setTimberPriceInput] = useState(initialValue)
 //get all timber prices from db and display ir on charts
 const [displayTimberList, setDisplayTimberList] = useState([])
 //get all timber icons from db
+const [latestPrice, setLatestPrice]= useState([])
 
 
 
@@ -40,21 +41,28 @@ const handleChange = (e) => {
 
 useEffect(()=>{
 listTimberPrice(setDisplayTimberList)
-
+latestTimberPrice(setLatestPrice)
 const findIndex = () => {
-   return  displayTimberList.at(-1)
+ let last= displayTimberList.at(-1)
+ console.log(last)
 }
-findIndex() 
+findIndex()
+console.log(latestPrice)
 
 
 
+const refiningTimberPrice = () => {
+
+   let timberPrice = 0;
 
 
-}, [displayTimberList])
+}
+
+}, [])
 
 // find all date key values in array of objects and slice it
 const newArr = displayTimberList.map((item) => {
-    return {...item, date: item.date.slice(0,10)};
+    return {...item, date: item.date.slice(0,3)};
  })
     return(
 
@@ -62,112 +70,61 @@ const newArr = displayTimberList.map((item) => {
 
     <div className="woodworking-grid">
         <form className="timber-list"  onSubmit={handleSubmit}>
+
             <label> Ironwood Plank
                 <input type="number" 
-                    oninput="this.value=this.value.slice(0,this.maxLength)"
                       onChange={(e)=>handleChange(e)} value={timberPriceInput.ironWoodPlank} name="ironWoodPlank" />
             </label>
 
             <label> Wyrdwood Plank
-                <input type="number"   onChange={(e)=>handleChange(e)} value={timberPriceInput.wyrdWoodPlank} name="wyrdWoodPlank"/>
+                <input type="number" onChange={(e)=>handleChange(e)} value={timberPriceInput.wyrdWoodPlank} name="wyrdWoodPlank"/>
             </label>
 
             <label> Lumber
-                <input type="number"   onChange={(e)=>handleChange(e)} value={timberPriceInput.lumber} name="lumber"/>
+                <input type="number" onChange={(e)=>handleChange(e)} value={timberPriceInput.lumber} name="lumber"/>
             </label>
 
             <label> Timber
-                <input type="number"   onChange={(e)=>handleChange(e)} value={timberPriceInput.timber} name="timber"/>
+                <input type="number" onChange={(e)=>handleChange(e)} value={timberPriceInput.timber} name="timber"/>
             </label>
 
             <label> Greenwood
-                <input type="number"   onChange={(e)=>handleChange(e)} value={timberPriceInput.greenWood} name="greenWood"/>
+                <input type="number" onChange={(e)=>handleChange(e)} value={timberPriceInput.greenWood} name="greenWood"/>
             </label>
 
             <label> Agedwood
-                <input type="number"   onChange={(e)=>handleChange(e)} value={timberPriceInput.agedWood} name="agedWood"/>
+                <input type="number" onChange={(e)=>handleChange(e)} value={timberPriceInput.agedWood} name="agedWood"/>
             </label>
 
             <label> Wyrdwood
-                <input type="number"   onChange={(e)=>handleChange(e)}  value={timberPriceInput.wyrdWood}  name="wyrdWood" />
+                <input type="number" onChange={(e)=>handleChange(e)}  value={timberPriceInput.wyrdWood}  name="wyrdWood" />
             </label>
 
             <label> IronWood
-                <input type="number"   onChange={(e)=>handleChange(e)}  value={timberPriceInput.ironWood} name="ironWood"/>
+                <input type="number" onChange={(e)=>handleChange(e)}  value={timberPriceInput.ironWood} name="ironWood"/>
             </label>
-
-
             <input className="submit-btn" type="submit" value="Submit"/>
       </form>
-
-
-<div className="chart timber">
-<div className="display-flex-wood">
-            <img className="timber-image"src={"https://cdn.nwdb.info/db/images/live/v18/icons/items/resource/timbert2.png" } alt="sd"/>
-            <h1 className="chart-titles">Timber</h1>
-        </div>
-      <TimberChart timberData={newArr}></TimberChart>
-</div>
-      <div className="chart lumber">
-      <div className="display-flex-wood">
-            <img className="timber-image"src={"https://cdn.nwdb.info/db/images/live/v18/icons/items/resource/timbert3.png" } alt="sd"/>
-            <h1 className="chart-titles">Lumber</h1>
-        </div>
-      <LumberChart timberData={newArr}></LumberChart>
-      </div>
-
 
 <h2 className="market-title">Timber market prices</h2>
 
 
-    <div className="chart ironwood-plank">
-        <div className="display-flex-wood">
-            <img className="timber-image"src={"https://cdn.nwdb.info/db/images/live/v18/icons/items/resource/timbert5.png" } alt="sd"/>
-            <h1 className="chart-titles">Ironwood Plank</h1>
-        </div>
-        <IronwoodPlank timberData={newArr}></IronwoodPlank>
-    </div>
+<TimberChart  topDivClass={"timber"}  imageId={"timbert2"} name={"Timber"} timberData={newArr}  domain1={0.50} domain2={1.2} datakey={"timber_price"}  ></TimberChart>
 
-    <div className="chart wyrdwood-plank">
-    <div className="display-flex-wood">
-            <img className="timber-image"src={"https://cdn.nwdb.info/db/images/live/v18/icons/items/resource/timbert4.png" } alt="sd"/>
-            <h1 className="chart-titles">Wyrdwood Plank</h1>
-        </div>
-      <WyrdwoodPlank timberData={newArr}></WyrdwoodPlank>
-      </div>
+<TimberChart  topDivClass={"lumber"}  imageId={"timbert3"} name={"Lumber"} timberData={newArr}  domain1={1} domain2={2} datakey={"lumber_price"}  ></TimberChart>
 
+<TimberChart  topDivClass={"wyrdwood-plank"} imageId={"timbert4"} name={"Wyrd Wood Plank"} timberData={newArr}  domain1={6} domain2={11} datakey={"wyrdwoodplank_price"}  ></TimberChart>
 
-    <div className="chart wyrdwood">
-    <div className="display-flex-wood">
-            <img className="timber-image"src={"https://cdn.nwdb.info/db/images/live/v18/icons/items/resource/woodt4.png" } alt="sd"/>
-            <h1 className="chart-titles">Wyrd Wood</h1>
-        </div>
-      <Wyrdwood timberData={newArr}></Wyrdwood>
-      </div>
+<TimberChart  topDivClass={"ironwood-plank"} imageId={"timbert5"} name={"Iron Wood Plank"} timberData={newArr}  domain1={15} domain2={19} datakey={"ironwoodplank_price"}  ></TimberChart>
 
-      <div className="chart greenwood">
-        <div className="display-flex-wood">
-            <img className="timber-image"src={"https://cdn.nwdb.info/db/images/live/v18/icons/items/resource/woodt1.png" } alt="sd"/>
-            <h1 className="chart-titles">Green Wood</h1>
-        </div>
-         <Greenwood timberData={newArr}></Greenwood>
-      </div>
+<TimberChart  topDivClass={"wyrdwood"} imageId={"woodt4"} name={"Wyrd Wood"} timberData={newArr}  domain1={1.15} domain2={1.8} datakey={"wyrdwood_price"}  ></TimberChart>
 
-      <div className="chart agedwood">
-        <div className="display-flex-wood">
-            <img className="timber-image"src={"https://cdn.nwdb.info/db/images/live/v18/icons/items/resource/woodt2.png" } alt="sd"/>
-            <h1 className="chart-titles">Aged Wood</h1>
-        </div>
-        <Agedwood timberData={newArr}></Agedwood>
-      </div>
+<TimberChart  topDivClass={"greenwood"} imageId={"woodt1"} name={"Green Wood"} timberData={newArr}  domain1={0} domain2={0.6} datakey={"greenwood_price"}  ></TimberChart>
 
-      <div className="chart ironwood">
-      <div className="display-flex-wood">
-            <img className="timber-image"src={"https://cdn.nwdb.info/db/images/live/v18/icons/items/resource/woodt5.png" } alt="sd"/>
-            <h1 className="chart-titles">Iron Wood</h1>
-        </div>
-      <Ironwood timberData={newArr}></Ironwood>
-      </div>
+<TimberChart  topDivClass={"agedwood"} imageId={"woodt2"} name={"Aged Wood"} timberData={newArr}  domain1={0.15} domain2={0.4} datakey={"agedwood_price"}  ></TimberChart>
+
+<TimberChart  topDivClass={"ironwood"} imageId={"woodt5"} name={"Iron Wood"} timberData={newArr}  domain1={1} domain2={2} datakey={"ironwood_price"}  ></TimberChart>
+ 
 
 
 <div className="timber-refining-box"> 
@@ -179,13 +136,13 @@ const newArr = displayTimberList.map((item) => {
                 <p className="refining">Refine </p>
             </div>
            
-                <div className="refining-info-grid">
+        <div className="refining-info-grid">
             <img className="greenwood-img"src={"https://cdn.nwdb.info/db/images/live/v18/icons/items/resource/woodt1.png" } alt="sd"/>
             <p className="greenwood-title-info"> Green Wood</p>
-            <div className="greenwood-qty">4</div>
+            <div className="greenwood-qty">{timberPriceInput.greenWood * 4}</div>
             <div className="timber-total">Total:</div>
-            <div className="timber-market-price">4.2</div>
-            <div className="timber-refining-price">0.15</div>
+            <div className="timber-market-price">{timberPriceInput.timber}</div>
+            <div className="timber-refining-price">{}</div>
         </div>
 
 

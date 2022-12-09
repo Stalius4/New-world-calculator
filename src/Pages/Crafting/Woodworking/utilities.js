@@ -43,18 +43,18 @@ export const listTimberPrice =  async (setDisplayTimberList) => {
   };}
 
 
-export const timberIcons =  async (setTimberIcon) => {
+  export const latestTimberPrice =  async (setLatestPrice) => {
     try {
-    const response = await fetch("http://localhost:5002/user/")
+    const response = await fetch("http://localhost:5002/timber/")
     const data = await response.json()
     
-    setTimberIcon(data.result[1].timber)
-   
+    setLatestPrice(data.result.at(-1))
+    // console.log(data.result)
     if (!response.ok){
       throw new Error(response.statusText)
     }
-    } 
-    catch (err) {
-      
+
+    // make sure result should me in array so I will be able tu use map()
+    } catch (err) {
     }
   }
