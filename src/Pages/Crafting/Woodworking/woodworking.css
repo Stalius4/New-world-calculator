@@ -13,14 +13,14 @@ input::-webkit-inner-spin-button {
     width: 1500px;
    
     display: grid;
-    grid-template-columns:  350px 350px 350px 350px;
+    grid-template-columns:  350px 350px 350px 350px 80px;
     grid-template-rows: 220px 220px  80px 220px 220px;
     grid-template-areas:
-      "content2 content2 content3 content4 "
-      "content2 content2  content5 content6  "
-      "content9 content9  content9 content9  "
-      "content10 content11 content12 content13"
-      "content14 content15  content16 content17";
+      " content2 . content3 content4 crafting-gear"
+      ". .  content5 content6 . "
+      "content9 content9  content9 content9 . "
+      "content10 content11 content12 content13  ."
+      "content14 content15  content16 content17 .";
       grid-row-gap: 25px;
 
 }
@@ -38,6 +38,7 @@ input::-webkit-inner-spin-button {
    padding: 10px;
    gap: 3px;
    z-index: 0;
+   grid-area: content2;
    box-shadow: #8e8f9066 0px 0px 0px 2px, rgba(62, 66, 71, 0.65) 0px 4px 6px -1px, rgba(165, 162, 162, 0.08) 0px 1px 0px inset;
 }
 
@@ -194,30 +195,40 @@ input[type=number] {
 }
 
 
-.timber-refining-box{
+.refining-box{
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 13px;
     color: #a8a7a6;
-    grid-area: content3;
+ 
     width: 320px;
     height:220px;
     justify-self: center;
     
 }
+.r-timber{
+    grid-area: content3;
+}
+.r-lumber{
+    grid-area: content4;
+}
 
+.r-wyrdwood-plank{
+    grid-area: content5;
+}
+.r-ironwood-plank{
+    grid-area: content6;
+}
 
 
 .refining-title-flex{
     height: 37px;
-   
     display: grid;
-    grid-template-columns: 55px 1fr 1fr 1fr 1fr;
+    grid-template-columns: 55px 60px 1fr 1fr 1fr;
     grid-template-rows: 15px 15px ;
     grid-template-areas:
       "timber-img timber-title  . content3 content4 "
       "timber-img timber-title qty  market refining ";
-  
       border-width:1px;
       border-style: solid;
       border-image: 
@@ -250,6 +261,7 @@ input[type=number] {
     color: #a8a7a6;
     align-self: center;
     grid-area: timber-title;
+    text-overflow: ellipsis;
 }
 
 
@@ -269,7 +281,7 @@ input[type=number] {
     justify-self: end;
 }
 
-.refining-info-grid{
+.refining-info-timber{
     height: 55px;
    padding-top: 12px;
 display: grid;
@@ -279,6 +291,7 @@ grid-template-areas:
  
   "greenwood-img greenwood-title greenwood-qty  market refining "
   ". .  timber-total timber-market-price timber-refining-price "
+
   ;
   gap: 5px;
   color: #ccc8c5;
@@ -295,7 +308,7 @@ grid-template-areas:
       rgba(209, 209, 209, 0),
       rgba(209, 209, 209, 0),
       rgba(196, 196, 195, 0),
-      rgba(196, 196, 195, 0)
+      #c4c4c300
     )0 0 1 0 ;
 }
 
@@ -317,6 +330,8 @@ grid-template-areas:
 
 }
 
+
+
 .greenwood-qty{
     grid-area: greenwood-qty;
     align-self: center;
@@ -325,7 +340,7 @@ grid-template-areas:
 }
 
 .timber-market-price{
-    padding-left: 5px;
+    padding-left:8px;
     grid-area:  timber-market-price;
     align-self: center;
     justify-self:center;
@@ -341,4 +356,119 @@ grid-template-areas:
     grid-area: timber-total;
     align-self: center;
     justify-self:end;
+}
+
+.trading-icon{
+    height:40px;
+    color: orange;
+
+}
+
+.refining-info-lumber{
+    height:153px;
+   padding-top: 12px;
+display: grid;
+grid-template-columns: 55px 100px 20px 1fr 1fr;
+grid-template-rows: 22px 30px 30px 30px;
+grid-template-areas:
+"agedwood-img agedwood-title agedwood-qty agedwood-price .  "
+  "greenwood-img greenwood-title greenwood-qty  lumber-market-price timber2-refined-price "
+  "sandpaper-img sandpaper-title sandpaper-qty sandpaper-price . "
+  ". .  timber-total timber-market-price timber-refining-price "
+ 
+  ;
+  gap: 5px;
+  row-gap: 15px;
+  color: #ccc8c5;
+  border-width: 0.1px;
+  border-style: solid;
+  border-image: 
+    linear-gradient(
+      to left, 
+      rgba(196, 196, 195, 0),
+      rgba(196, 196, 195, 0.701),
+      rgba(196, 196, 195, 0.942),
+      rgba(196, 196, 195, 0.701),
+      rgba(196, 196, 195, 0.05),
+      rgba(209, 209, 209, 0),
+      rgba(209, 209, 209, 0),
+      rgba(196, 196, 195, 0),
+      #c4c4c300
+    )0 0 1 0 ;
+}
+.agedwood-img{
+    height: 30px;
+    border-radius: 50%;
+    border: grey 1px solid;
+    grid-area: agedwood-img;
+    align-self: center;
+    justify-self: end;
+}
+
+.agedwood-title-info{
+align-self: center;
+grid-area: agedwood-title;
+font-size: 12px;
+
+}
+.agedwood-qty{
+    grid-area: agedwood-qty;
+    align-self: center;
+    justify-self:center;
+    
+}
+
+.sandpaper-img{
+    height: 30px;
+    border-radius: 50%;
+    border: rgb(51, 164, 14) 1px solid;
+    grid-area: sandpaper-img;
+    align-self: center;
+    justify-self: end;
+    background-color: #0ca7285b;
+}
+.sandpaper-title-info{
+    align-self: center;
+    grid-area: sandpaper-title;
+    font-size: 12px;
+    color: rgb(51, 164, 14);
+    
+}
+
+.sandpaper-qty{
+    grid-area: sandpaper-qty;
+    align-self: center;
+    justify-self:center;
+    
+}
+.sandpaper-market-price{
+    padding-left:8px;
+    align-self: center;
+    justify-self:center;
+    grid-area: sandpaper-price;
+    font-size: 12px;
+    
+}
+
+.agedwood-total-price{
+    padding-left:8px;
+    align-self: center;
+    justify-self:center;
+    grid-area: agedwood-price;
+    font-size: 12px;
+    
+}
+
+.lumber-market-price{
+    padding-left:8px;
+    grid-area:  lumber-market-price;
+    align-self: center;
+    justify-self:center;
+}
+
+.timber2-refined-price{
+    grid-area: timber2-refined-price;
+    align-self: center;
+    justify-self:center;
+
 }

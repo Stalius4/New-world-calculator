@@ -1,12 +1,15 @@
 
 
+
 export const listTimberPrice =  async (setDisplayTimberList) => {
     try {
+        
     const response = await fetch("http://localhost:5002/timber/")
     const data = await response.json()
     
     setDisplayTimberList(data.result)
     // console.log(data.result)
+   
     if (!response.ok){
       throw new Error(response.statusText)
     }
@@ -16,7 +19,7 @@ export const listTimberPrice =  async (setDisplayTimberList) => {
     }
   }
 
-  export const createPriceList = async (timber, lumber,wyrdwoodPlank,ironwoodPlank,greenwood,agedwood,wyrdwood,ironwood) => {
+  export const createPriceList = async (timber, lumber,wyrdwoodPlank,ironwoodPlank,greenwood,agedwood,wyrdwood,ironwood, sandpaper) => {
     try {
     
       const res = await fetch("http://localhost:5002/timber/", {
@@ -31,6 +34,7 @@ export const listTimberPrice =  async (setDisplayTimberList) => {
             agedwood_price: agedwood,
             wyrdwood_price: wyrdwood,
             ironwood_price: ironwood,
+            sandpaper_price: sandpaper,
            
         }),
       });
@@ -43,13 +47,32 @@ export const listTimberPrice =  async (setDisplayTimberList) => {
   };}
 
 
-  export const latestTimberPrice =  async (setLatestPrice) => {
+  export const latestTimberPrice =  async (setLatestPrice, latestPrice, setLoading,) => {
     try {
+      setLoading(true);
     const response = await fetch("http://localhost:5002/timber/")
     const data = await response.json()
     
-    setLatestPrice(data.result.at(-1))
+   let result = data.result.at(-1)
     // console.log(data.result)
+
+
+    
+  setLatestPrice ({
+    ...latestPrice,
+    timber: result.timber_price,
+    lumber: result.lumber_price,
+    wyrdWoodPlank: result.wyrdwoodplank_price,
+    ironWoodPlank:result.ironwoodplank_price,
+    greenWood:result.greenwood_price,
+    agedWood:result.agedwood_price,
+    wyrdWood:result.wyrdwood_price,
+    ironWood:result.wyrdwood_price,
+    sandpaper:result.sandpaper_price,
+  })
+  
+  setLoading(false);
+ 
     if (!response.ok){
       throw new Error(response.statusText)
     }

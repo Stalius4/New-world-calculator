@@ -1,0 +1,41 @@
+
+   
+
+
+.crafting-gear-outer-box{
+    grid-area: crafting-gear;
+   
+    width: 80px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+   
+
+
+.selected-gear{
+    height: 45px;
+    border: black solid 1px ;
+    border-radius: 7px;
+    background-color:rgba(0, 202, 233, 0.281) ;
+    border: rgb(0,203,233) solid 1px;
+    place-self: center;
+    box-sizing: border-box;
+    transform: scale(1.1);
+}
+      
+
+.unselected-gear{
+    height: 45px;
+    border: black solid 1px ;
+    border-radius: 7px;
+    background-color:rgba(0, 202, 233, 0.281) ;
+    border: rgb(0,203,233) solid 1px;
+    filter: grayscale(1);
+    box-sizing: border-box;
+}
+
+.unselected-gear:hover{
+    filter: grayscale(0);
+}

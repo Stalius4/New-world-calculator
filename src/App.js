@@ -9,7 +9,7 @@ import NavBar from './Components/NavBar/nav';
 import Footer from './Components/Footer/footer';
 import Woodworking from './Pages/Crafting/Woodworking/woodworking';
 function App() {
-//   const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 // const [consumableList, setConsumableList] = useState ([])
 const [toggleNavbar, setToggleNavbar] = useState(true)
 
@@ -21,7 +21,7 @@ const [toggleNavbar, setToggleNavbar] = useState(true)
    
     <NavBar toggleNavbar={toggleNavbar} setToggleNavbar={setToggleNavbar}></NavBar>
     <div className={toggleNavbar ?'content-box': "content-box-mini"}>
-      <Woodworking> </Woodworking>
+      <Woodworking loading={loading} setLoading={setLoading} > </Woodworking>
     </div>
 {/* <Consumable loading={loading} setLoading={setLoading}  consumableList={consumableList} setConsumableList={setConsumableList} ></Consumable> */}
 <Footer></Footer>
