@@ -54,7 +54,7 @@ export const listTimberPrice =  async (setDisplayTimberList) => {
     const data = await response.json()
     
    let result = data.result.at(-1)
-    // console.log(data.result)
+
 
 
     
@@ -67,7 +67,7 @@ export const listTimberPrice =  async (setDisplayTimberList) => {
     greenWood:result.greenwood_price,
     agedWood:result.agedwood_price,
     wyrdWood:result.wyrdwood_price,
-    ironWood:result.wyrdwood_price,
+    ironWood:result.ironwood_price,
     sandpaper:result.sandpaper_price,
   })
   
