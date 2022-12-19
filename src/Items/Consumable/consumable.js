@@ -23,7 +23,7 @@ useEffect (() => {
   const listConsumable =  async (setUserList) => {
     try {
       // setLoading(true);
-    const response = await fetch("http://localhost:5002/user/")
+    const response = await fetch("https://nw-back-end-production.up.railway.app/user/")
     const data = await response.json()
    
     setConsumableList(data.result[0].data)

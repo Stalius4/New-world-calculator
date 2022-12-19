@@ -1,6 +1,6 @@
 export const listUsers =  async (setUserList) => {
     try {
-    const response = await fetch("http://localhost:5001/user/")
+    const response = await fetch("https://nw-back-end-production.up.railway.app/user/")
     const data = await response.json()
     console.log(response,"resp")
     setUserList(data.result.data)

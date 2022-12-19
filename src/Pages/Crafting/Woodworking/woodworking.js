@@ -87,13 +87,13 @@ useEffect(()=>{
 listTimberPrice(setDisplayTimberList)
 latestTimberPrice(setLatestPrice, latestPrice, setLoading )
 
-
+// eslint-disable-next-line
 }, [])
 
 
 useEffect(()=>{
     refinedTimber()
-
+// eslint-disable-next-line
     }, [latestPrice, refiningPercantage])
 
 // find all date key values in array of objects and slice it
