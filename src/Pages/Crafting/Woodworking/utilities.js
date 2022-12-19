@@ -4,7 +4,7 @@
 export const listTimberPrice =  async (setDisplayTimberList) => {
     try {
         
-    const response = await fetch("http://localhost:5002/timber/")
+    const response = await fetch("https://nw-back-end-production.up.railway.app/timber/")
     const data = await response.json()
     
     setDisplayTimberList(data.result)
@@ -22,7 +22,7 @@ export const listTimberPrice =  async (setDisplayTimberList) => {
   export const createPriceList = async (timber, lumber,wyrdwoodPlank,ironwoodPlank,greenwood,agedwood,wyrdwood,ironwood, sandpaper) => {
     try {
     
-      const res = await fetch("http://localhost:5002/timber/", {
+      const res = await fetch("https://nw-back-end-production.up.railway.app/timber/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -50,7 +50,7 @@ export const listTimberPrice =  async (setDisplayTimberList) => {
   export const latestTimberPrice =  async (setLatestPrice, latestPrice, setLoading,) => {
     try {
       setLoading(true);
-    const response = await fetch("http://localhost:5002/timber/")
+    const response = await fetch("https://nw-back-end-production.up.railway.app/timber/")
     const data = await response.json()
     
    let result = data.result.at(-1)

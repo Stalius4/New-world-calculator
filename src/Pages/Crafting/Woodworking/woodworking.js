@@ -8,7 +8,7 @@ import CraftingGear from "../components/craftingGear";
 
 
 
-const arr = [1 , 2 ]
+
  
 const Woodworking = ({setLoading}) => {
     const initialValue = {
@@ -75,16 +75,11 @@ const handleChange = (e) => {
     const  refIronwood100= refinedIronwoodPrice *100
     const  refIronwoodPriceWithBonus = round(refIronwood100 / (113 +  refiningPercantage), 2)
 
-
-
     setRefinedgPrices({...refinedPrices, 
         timber:refinedTimberPrice, 
         lumber:refLumberPriceWithBonus, 
         wyrdWoodPlank:refWyrdwoodPriceWithBonus,
         ironWoodPlank:refIronwoodPriceWithBonus})
-
-
-
 
 }
  
@@ -98,7 +93,7 @@ latestTimberPrice(setLatestPrice, latestPrice, setLoading )
 
 useEffect(()=>{
     refinedTimber()
-    console.log(latestPrice)
+
     }, [latestPrice, refiningPercantage])
 
 // find all date key values in array of objects and slice it
